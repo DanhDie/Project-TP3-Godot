@@ -1,8 +1,13 @@
 [gd_scene format=3 uid="uid://drxgghl43g43k"]
 
 [ext_resource type="PackedScene" uid="uid://dh3vvdyr5t8pc" path="res://Scenes/personagem.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_bo1nx"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
 
 [node name="Personagem" parent="." unique_id=1116870951 instance=ExtResource("1_ig7tw")]
 position = Vector2(523, 300)
+
+[node name="Inimigo" parent="." unique_id=1976030229 node_paths=PackedStringArray("player") instance=ExtResource("2_bo1nx")]
+position = Vector2(53, 235)
+player = NodePath("../Personagem")

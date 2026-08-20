@@ -1,16 +1,17 @@
 [gd_scene format=3 uid="uid://bsl2l0w0v636g"]
 
+[ext_resource type="Script" uid="uid://baghp50fcgjxo" path="res://Scripts/Inimigo.cs" id="1_1vr66"]
 [ext_resource type="Texture2D" uid="uid://4q335xxs2p" path="res://Assets/icon.svg" id="1_nj8y5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mqvok"]
 size = Vector2(126, 126)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1976030229]
+script = ExtResource("1_1vr66")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=178248152]
 modulate = Color(0.8284133, 0.30860686, 0.45035857, 1)
 texture = ExtResource("1_nj8y5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638716767]
-visible = false
 shape = SubResource("RectangleShape2D_mqvok")

@@ -3,7 +3,7 @@ using System;
 
 public partial class Personagem : CharacterBody2D
 {
-    [Export] public float Velocidade = 400.0f;
+    [Export] public float velocidade = 400.0f;
 
     public override void _PhysicsProcess(double delta)
     {
@@ -14,7 +14,7 @@ public partial class Personagem : CharacterBody2D
             "mover_baixo"
         );
 
-        Velocity = direcao * Velocidade;
+        Velocity = direcao * velocidade;
 
         MoveAndSlide();
     }
