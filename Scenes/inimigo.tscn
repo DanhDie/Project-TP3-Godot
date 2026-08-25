@@ -2,24 +2,25 @@
 
 [ext_resource type="Script" uid="uid://baghp50fcgjxo" path="res://Scripts/Inimigo.cs" id="1_1vr66"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mqvok"]
-size = Vector2(126, 126)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o47jk"]
+radius = 37.5
+height = 136.0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nj8y5"]
-_data = PackedByteArray("AAADAAUAAAABAAAAgAIAAIACAABEAgAAUklGRjwCAABXRUJQVlA4TDACAAAvf8KfEDegppEU6OoPSoJD9KJOQQNCkAD034RQwT3F1DSSAt1HTUlwh3OszH8AMJnbRZZW+3/nA0eRJAkKFrCwFrBwFs7C+fewE909swPBazqi/5DcNpIkyddeHIrunokvvP6+2H/sP/Yf+88Yys3SagSDQLB7gQT6zTE/86vuslaKPztrB8mmoya6aHOEEcIw6MMwP9PvjqrzUnKXdUGTjXh2gg1aQxthACcxDN1R1ktil5qXDo8FoRMhLhCkCY7AoskZwKE26rxQQ98B/axdUuhnaChH84Imr/OCumheAq0eu1hCyfdOgNZYLCUPnZ/pIicUKvFSfJc1QDtV6TVLL1yt6YwOusuyXjqfZHQErTjawsWCiifqIlfzOOjKynrRSh4jsQ/NvbgFKaHuidmGbZBnNGqJl5KSYaKz0LrHqBtwACcUTxxY9EYsadqUYi9jN53loBpHlBzIiU036DyZ02Gsn5cxmaZ2v2Os2Zm/L/Yf+4/9x/5j/7H/2H/sP/Yf+4/9x/5j/7H/mCluEK2Lm+BmQTw7oRCtodX1CyD3FwtdFCqE1pioq401+KNJ1B77YVk7cTNSAqEarYseisYKhcJDB380iQn3CyRs4b0ToDVQv8TObQFItlYDGUfbekBQF7qZxERmgBK7tOQlRStpENAUIzSxoctiKSmZeOzgj6aYik1AqyVWQavR/VoAEp5L+tEaxRPNzvx9sf/Yf+w/9h/7j/3H/mP/sf/Yf2woLw==")
-size_override = Vector2(640, 640)
+_data = PackedByteArray("AAADAAUAAAABAAAAQAEAAEABAABOAgAAUklGRkYCAABXRUJQVlA4TDoCAAAvP8FPEDegppEU6OoPSoJD9KJOQQNCkAD034RQwT3F1DSSAt1HTUlwh3OszH8AMJnbRZZW+3/nA9i19rZt/KIBXCZQWUCIB4gD5dkNmSDR/jMQ+GGS6UhRRP8huW0kSZKvs1hGZtYfVh9eFv+JQI5iUwqUa+IdkYlTriL1+sUfb+2elysw3xG17YE5lQStvAbMfdsSPZh+8Ue9+5vnkXHPKzESmZKGeX5ShZd5ToACUReJ1PA4wxo3PfyFhlKPG74aKCnKI6c8K2JVNf5+8ckBFPI8QKZ/BQgWZyewLkUqngdr8jxY43kkCiceUdrmwLxe3yu79VrXtSGbzhs7/qh0z3M8cu95ORfBTPAEwWN0dQrtgxUomfA94J6P9YD2nqXRZydmMK+pMYpTzHXO8rApw9/AM3f1IWawgqZRCfieRUo9RAazXyETPABlZD031/jE1PWA12KfUagquR4BSqVWqT20KjDP9sgfrClvFZ7kJ583l4DhPaWqpXf3o48PL4v/LP6z+M9/0BwlpfEa/BRwFBvDPD9ph5d5NkClJvIRmdhGRJRH7fCc0LDNVcQbMcaBp+Co5ndk07ZnM4Qz09C2ZPPADM/InkikiWxgDaKLiG/etSkH5vX6Xtmt18y9dhn91UKdDn7WmMNME3xS4eN6hSFulAx6vI8mOzFbmZLxzgo2aNsRvpfeYK0TTx++v13bwlar2MbbAF4B8THmZjUXTQK2inB834wuDSyUXTL6+PCy+M/iP/9/swI=")
+size_override = Vector2(320, 320)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vr66"]
 atlas = SubResource("PortableCompressedTexture2D_nj8y5")
-region = Rect2(0, 0, 320, 320)
+region = Rect2(0, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8p8dk"]
 atlas = SubResource("PortableCompressedTexture2D_nj8y5")
-region = Rect2(320, 0, 320, 320)
+region = Rect2(160, 0, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayero"]
 atlas = SubResource("PortableCompressedTexture2D_nj8y5")
-region = Rect2(0, 320, 320, 320)
+region = Rect2(0, 160, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qpp8r"]
 animations = [{
@@ -34,43 +35,21 @@ animations = [{
 "texture": SubResource("AtlasTexture_ayero")
 }],
 "loop": 1,
-"name": &"idle",
+"name": &"default",
 "speed": 10.0
 }]
-
-[sub_resource type="Animation" id="Animation_nj8y5"]
-resource_name = "Walk"
-loop_mode = 1
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"idle", 1.0, false],
-"method": &"play"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1vr66"]
-_data = {
-&"Walk": SubResource("Animation_nj8y5")
-}
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1976030229]
 script = ExtResource("1_1vr66")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638716767]
-shape = SubResource("RectangleShape2D_mqvok")
+position = Vector2(0, -5.82)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o47jk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1962497488]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_qpp8r")
-animation = &"idle"
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -85,15 +64,10 @@ metadata/_aseprite_wizard_config_ = {
 "o_folder": "",
 "o_name": "",
 "only_visible": true,
-"scale": "10.0",
+"scale": "5.0",
 "should_round_fps": true,
 "slice": "",
 "source": "res://Assets/Animations/morcego.aseprite",
 "source_uid": 5254849624222515208
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b7a7768118580e4fe6f5ceac831bdb98"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553296109]
-root_node = NodePath("../AnimatedSprite2D")
-libraries/ = SubResource("AnimationLibrary_1vr66")
-autoplay = &"Walk"

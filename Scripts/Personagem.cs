@@ -3,27 +3,101 @@ using System;
 
 public partial class Personagem : CharacterBody2D
 {
-	[Export] public float velocidade = 400.0f;
-	
-	[Export] private AnimationPlayer animationPlayer;
-	
-	public override void _Ready()
-	{
-		animationPlayer = GetNode<AnimationPlayer>("AnimationPlayer");
-		
-	}
+    [Export] public float velocidade = 400.0f;
+    [Export] private AnimatedSprite2D animatedSprite;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		Vector2 direcao = Input.GetVector(
-			"mover_esquerda",
-			"mover_direita",
-			"mover_cima",
+    private enum Estado
+    {
+        IdleFrente,
+        IdleCostas,
+        IdleLado,
+        WalkFrente,
+        WalkCostas,
+        WalkLado
+    }
+
+    private Estado estadoAtual = Estado.IdleFrente;
+
+    public override void _Ready()
+    {
+        animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 direcao = Input.GetVector(
+            "mover_esquerda",
+            "mover_direita",
+            "mover_cima",
             "mover_baixo"
-		);
+        );
 
-		Velocity = direcao * velocidade;
+        Velocity = direcao * velocidade;
 
-		MoveAndSlide();
-	}
+        AtualizarEstado(direcao);
+        AtualizarAnimacao();
+
+        MoveAndSlide();
+    }
+
+    private void AtualizarEstado(Vector2 direcao)
+    {
+        if (direcao == Vector2.Zero)
+        {
+            // Mantém a direção anterior, mas troca Walk por Idle
+            estadoAtual = estadoAtual switch
+            {
+                Estado.WalkFrente => Estado.IdleFrente,
+                Estado.WalkCostas => Estado.IdleCostas,
+                Estado.WalkLado => Estado.IdleLado,
+                _ => estadoAtual
+            };
+
+            return;
+        }
+
+        if (Mathf.Abs(direcao.X) > Mathf.Abs(direcao.Y))
+        {
+            estadoAtual = Estado.WalkLado;
+            animatedSprite.FlipH = direcao.X < 0;
+        }
+        else if (direcao.Y < 0)
+        {
+            estadoAtual = Estado.WalkCostas;
+        }
+        else
+        {
+            estadoAtual = Estado.WalkFrente;
+        }
+    }
+
+    private void AtualizarAnimacao()
+    {
+        switch (estadoAtual)
+        {
+            case Estado.IdleFrente:
+                animatedSprite.Play("idle_frente");
+                break;
+
+            case Estado.IdleCostas:
+                animatedSprite.Play("idle_costas");
+                break;
+
+            case Estado.IdleLado:
+                animatedSprite.Play("idle_lado");
+                break;
+
+            case Estado.WalkFrente:
+                animatedSprite.Play("walk_frente");
+                break;
+
+            case Estado.WalkCostas:
+                animatedSprite.Play("walk_costas");
+                break;
+
+            case Estado.WalkLado:
+                animatedSprite.Play("walk_lado");
+                break;
+        }
+    }
 }
