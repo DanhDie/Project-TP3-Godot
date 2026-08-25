@@ -93,6 +93,7 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b7a7768118580e4fe6f5ceac831bdb98"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1553296109]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1553296109]
+root_node = NodePath("../AnimatedSprite2D")
 libraries/ = SubResource("AnimationLibrary_1vr66")
 autoplay = &"Walk"
