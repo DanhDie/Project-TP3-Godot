@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\personagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\personagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\movementcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\movementcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,33 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "MovementComponent.cs",
-              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\MovementComponent.cs",
-              "RelativeDocumentMoniker": "Scripts\\MovementComponent.cs",
-              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\MovementComponent.cs",
-              "RelativeToolTip": "Scripts\\MovementComponent.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAA+wAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T18:28:25.131Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Inimigo.cs",
-              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Inimigo.cs",
-              "RelativeDocumentMoniker": "Scripts\\Inimigo.cs",
-              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Inimigo.cs",
-              "RelativeToolTip": "Scripts\\Inimigo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T14:24:49.409Z"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -57,9 +24,9 @@
               "RelativeDocumentMoniker": "Scripts\\Personagem.cs",
               "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Personagem.cs",
               "RelativeToolTip": "Scripts\\Personagem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-20T14:13:38.598Z",
+              "WhenOpened": "2026-08-25T18:28:24.911Z",
               "EditorCaption": ""
             }
           ]

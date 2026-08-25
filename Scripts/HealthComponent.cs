@@ -20,4 +20,9 @@ public partial class HealthComponent : Node2D
 			health = maxHealth;
 		}
 	}
+
+	public float getHealth()
+    {
+        return health;
+    }
 }

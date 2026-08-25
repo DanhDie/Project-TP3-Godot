@@ -12,7 +12,7 @@ public partial class Inimigo : CharacterBody2D
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         animatedSprite.Play("default");
     }
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
 	{
 		//checar se player esta presente
 		if (player != null)
