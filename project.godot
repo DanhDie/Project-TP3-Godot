@@ -24,6 +24,10 @@ window/stretch/aspect="expand"
 
 project/assembly_name="ProjectTP3"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
 [input]
 
 mover_cima={
