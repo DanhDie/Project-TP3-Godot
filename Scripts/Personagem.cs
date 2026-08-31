@@ -5,6 +5,7 @@ public partial class Personagem : CharacterBody2D
 {
     [Export] public float velocidade = 400.0f;
     [Export] private AnimatedSprite2D animatedSprite;
+    [Export] private PackedScene tiroAtual;
 
     private enum Estado
     {
@@ -21,6 +22,13 @@ public partial class Personagem : CharacterBody2D
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+    }
+    public override void _Process(double delta)
+    {
+        if (Input.IsActionJustPressed("atirar"))
+        {
+            Atirar();
+        }
     }
 
     public override void _PhysicsProcess(double delta)
@@ -99,5 +107,16 @@ public partial class Personagem : CharacterBody2D
                 animatedSprite.Play("walk_lado");
                 break;
         }
+    }
+
+    private void Atirar()
+    {
+        Node2D bala = tiroAtual.Instantiate<Node2D>();
+        GetTree().CurrentScene.AddChild(bala);
+
+        bala.GlobalPosition = GlobalPosition;
+
+        Vector2 direcao = GetGlobalMousePosition() - GlobalPosition;
+        bala.Rotation = direcao.Angle();
     }
 }

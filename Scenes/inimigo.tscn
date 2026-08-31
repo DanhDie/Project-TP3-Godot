@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://clc3mck2oy2hk" path="res://Assets/Layout/dentro_barra_inimigo.png" id="3_qpp8r"]
 [ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="4_fokg4"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="5_qpp8r"]
+[ext_resource type="Script" uid="uid://c77sewjskc560" path="res://Scripts/Label.cs" id="6_fokg4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o47jk"]
 radius = 16.085
@@ -44,6 +45,8 @@ animations = [{
 }]
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1976030229]
+collision_layer = 2
+collision_mask = 6
 script = ExtResource("1_1vr66")
 velocidade = 50.0
 
@@ -87,6 +90,7 @@ offset_right = 18.0
 offset_bottom = -17.5
 grow_horizontal = 2
 grow_vertical = 2
+rounded = true
 nine_patch_stretch = true
 stretch_margin_left = 5
 stretch_margin_top = 5
@@ -98,4 +102,13 @@ script = ExtResource("4_fokg4")
 player = NodePath("..")
 
 [node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("5_qpp8r")]
-maxHealth = 5.0
+
+[node name="Label" type="Label" parent="." unique_id=818187869 node_paths=PackedStringArray("vida")]
+offset_left = -13.0
+offset_top = -48.0
+offset_right = 27.0
+offset_bottom = 1.0
+text = "10
+"
+script = ExtResource("6_fokg4")
+vida = NodePath("../HealthComponent")

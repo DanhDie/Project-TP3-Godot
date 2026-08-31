@@ -18,7 +18,7 @@ public partial class HealthPlayer : TextureProgressBar
 
     private void atualizarVida()
     {
-        Value = healthPlayer.getHealth()*100 / healthPlayer.maxHealth;
+        Value = (healthPlayer.getHealth() / healthPlayer.maxHealth) * 100f;
     }
-	
+
 }
