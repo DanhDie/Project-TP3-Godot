@@ -5,12 +5,12 @@ public partial class HealthComponent : Node2D
 {
 	[Export] public float maxHealth = 10f;
 	private float health;
-    public override void _Ready()
-    {
-        health = maxHealth;
-    }
+	public override void _Ready()
+	{
+		health = maxHealth;
+	}
 
-    public void takeDamage(float damage){
+	public void takeDamage(float damage){
 		health-=damage;
 		if(health<=0){
 			health = 0;
@@ -26,7 +26,7 @@ public partial class HealthComponent : Node2D
 	}
 
 	public float getHealth()
-    {
-        return health;
-    }
+	{
+		return health;
+	}
 }

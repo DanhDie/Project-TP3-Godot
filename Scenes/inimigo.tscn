@@ -5,11 +5,10 @@
 [ext_resource type="Texture2D" uid="uid://clc3mck2oy2hk" path="res://Assets/Layout/dentro_barra_inimigo.png" id="3_qpp8r"]
 [ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="4_fokg4"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="5_qpp8r"]
-[ext_resource type="Script" uid="uid://c77sewjskc560" path="res://Scripts/Label.cs" id="6_fokg4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o47jk"]
-radius = 16.085
-height = 54.0
+radius = 11.085
+height = 45.52
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nj8y5"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAABmAQAAUklGRl4BAABXRUJQVlA4TFIBAAAvf8AfEDegppEU6OoPSoJD9KJOQQNCkAD034RQwT3F1DSSAt1HTUlwh3OszH8AMJnbRZZW+3/nA1qRJEmSLKfQFJyCUzAKRiH5c+hzZau+3iER/Z+A/FNS/Uy9GeEb8GLUz9TPZMVEE02kw0sRnjTRJ/CrYTx6jOxqZNXEo8dEO/xA1m3ogaNs6/BiUD1wVPnNKoDdBa0bVAALW/eBrNva8oAHbbd1eBnytJUHPOj2hF+owjmgek0tnAPtD1aTOICZxO561AFM/SJu5tm2Nc9u5kpWk9i2JrH7DPNd5GLM03RP8VfTXVHEvDQxL8V8aN6amLfmij794s//fTE/NLfyv2E10btS49Fj1BsS0ANHAZN4HyayrQLYbRjnXTjttpYHPGi31Vvp1k3hHNCtW2/HOIAZbyauq0lsW5PYdeY2YueL6V64mhuJ5qWJeam5lf/yBQ==")
@@ -50,7 +49,16 @@ collision_mask = 6
 script = ExtResource("1_1vr66")
 velocidade = 50.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=638716767]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761500617]
+position = Vector2(-0.115, -2.325)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o47jk")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2111032003]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=638716767]
 position = Vector2(-0.24, -3.085)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_o47jk")
@@ -103,12 +111,4 @@ player = NodePath("..")
 
 [node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("5_qpp8r")]
 
-[node name="Label" type="Label" parent="." unique_id=818187869 node_paths=PackedStringArray("vida")]
-offset_left = -13.0
-offset_top = -48.0
-offset_right = 27.0
-offset_bottom = 1.0
-text = "10
-"
-script = ExtResource("6_fokg4")
-vida = NodePath("../HealthComponent")
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
