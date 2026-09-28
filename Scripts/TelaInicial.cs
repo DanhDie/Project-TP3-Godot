@@ -18,7 +18,9 @@ public partial class TelaInicial : Control
 
     public void _Play()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/main.tscn");
+        TransicionScene transicao = GetNode<TransicionScene>("/root/TransicionScene");
+
+        transicao.transicion("res://Scenes/main.tscn");
 		gameManager.timer = 0;
 	}
 }

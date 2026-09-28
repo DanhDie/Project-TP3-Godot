@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://drxgghl43g43k"]
 
+[ext_resource type="Script" uid="uid://cnom327k1u6gw" path="res://Scenes/Main.cs" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dh3vvdyr5t8pc" path="res://Scenes/personagem.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_bo1nx"]
 [ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dpaba7x2uwphu" path="res://Assets/Layout/fundo_barra.png" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://b3tckien8ej54" path="res://Scripts/Contador.cs" id="6_6bp64"]
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
+script = ExtResource("1_6bp64")
 
 [node name="Personagem" parent="." unique_id=1116870951 instance=ExtResource("1_ig7tw")]
 position = Vector2(317, 184)
@@ -42,5 +45,6 @@ offset_left = 304.0
 offset_top = 10.0
 offset_right = 344.0
 offset_bottom = 33.0
+theme = ExtResource("7_344ge")
 text = "100"
 script = ExtResource("6_6bp64")
