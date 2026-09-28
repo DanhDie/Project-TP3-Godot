@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cbsqprkofd7so"]
+
+[node name="Start" type="Button" unique_id=769826495]
+custom_minimum_size = Vector2(180, 40)
+text = "Iniciar Jogo"

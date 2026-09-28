@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://bscg3cd802y48"]
 
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="1_6rs07"]
+[ext_resource type="Script" uid="uid://b7o0mc052qo82" path="res://Scripts/TelaInicial.cs" id="2_pekxb"]
+[ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="2_rrt2p"]
+
 [node name="TelaInicial" type="Control" unique_id=1558152645]
 layout_mode = 3
 anchors_preset = 15
@@ -7,37 +11,72 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_6rs07")
+script = ExtResource("2_pekxb")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1850434997]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=849653460]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.3372549, 0.49411765, 1)
 
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=966883501]
+[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=966883501]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1383590986]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=152433213]
+layout_mode = 2
+theme_type_variation = &"RichTextLabelTittle"
+bbcode_enabled = true
+text = "[shake rate=5 level=2]MORAX GAME
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Subtitulo" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer/RichTextLabel" unique_id=1924801247]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_right = 283.0
-grow_vertical = 2
+offset_left = -92.5
+offset_top = -51.0
+offset_right = 96.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"RichTextLabelSubTittle"
+bbcode_enabled = true
+text = "[wave]The Return
+"
+fit_content = true
+autowrap_mode = 0
+tab_size = 3
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PanelContainer" type="PanelContainer" parent="CenterContainer" unique_id=1260296426]
+[node name="Start" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("2_rrt2p")]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/PanelContainer" unique_id=1383590986]
+[node name="Options" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=2066393955 instance=ExtResource("2_rrt2p")]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Start" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=540656324]
-layout_mode = 2
-text = "Iniciar Jogo"
-
-[node name="Options" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=197640470]
-layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "Opções"
 
-[node name="Exit" type="Button" parent="CenterContainer/PanelContainer/VBoxContainer" unique_id=1287119860]
+[node name="Exit" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1709394409 instance=ExtResource("2_rrt2p")]
+unique_name_in_owner = true
 layout_mode = 2
-text = "Sair"
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Sair
+"

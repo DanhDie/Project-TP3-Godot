@@ -1,0 +1,43 @@
+[gd_resource type="Theme" format=3 uid="uid://bq11ynibywv1j"]
+
+[ext_resource type="FontFile" uid="uid://bpds1py0u2lxy" path="res://Theme/Jersey10-Regular.ttf" id="1_735eu"]
+[ext_resource type="StyleBox" uid="uid://1ntpqggaguta" path="res://Theme/box_flat].tres" id="1_f1cwl"]
+[ext_resource type="StyleBox" uid="uid://8box8qrj6wsk" path="res://Theme/box_button.tres" id="1_j0dtj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_meqr2"]
+bg_color = Color(0.21176471, 0.20784314, 0.21568628, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+
+[resource]
+default_font = ExtResource("1_735eu")
+default_font_size = 24
+Button/colors/font_color = Color(0.96862745, 0.96862745, 1, 1)
+Button/colors/font_focus_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+Button/colors/font_hover_color = Color(1, 0.78431374, 0.34117648, 1)
+Button/colors/font_hover_pressed_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+Button/colors/font_pressed_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+Button/font_sizes/font_size = 28
+Button/styles/hover = ExtResource("1_j0dtj")
+Button/styles/pressed = SubResource("StyleBoxFlat_meqr2")
+PanelContainer/styles/panel = ExtResource("1_f1cwl")
+RichTextLabel/colors/default_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+RichTextLabelSubTittle/base_type = &"RichTextLabel"
+RichTextLabelSubTittle/colors/default_color = Color(0.96862745, 0.96862745, 1, 1)
+RichTextLabelSubTittle/colors/font_outline_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+RichTextLabelSubTittle/colors/font_shadow_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+RichTextLabelSubTittle/constants/outline_size = 2
+RichTextLabelSubTittle/constants/shadow_offset_x = 2
+RichTextLabelSubTittle/constants/shadow_offset_y = 3
+RichTextLabelSubTittle/font_sizes/normal_font_size = 25
+RichTextLabelTittle/base_type = &"RichTextLabel"
+RichTextLabelTittle/colors/default_color = Color(1, 0.78431374, 0.34117648, 1)
+RichTextLabelTittle/colors/font_shadow_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+RichTextLabelTittle/constants/shadow_offset_x = 2
+RichTextLabelTittle/constants/shadow_offset_y = 2
+RichTextLabelTittle/constants/shadow_outline_size = 2
+RichTextLabelTittle/font_sizes/normal_font_size = 70
+VBoxContainer/constants/separation = 6

@@ -6,7 +6,7 @@ public partial class GameManager : Node
 	public float timer = 0f;
 
 	public override void _Process(double delta)
-	{ 
+	{
 		aumentarTempo(delta);
 	}
 
