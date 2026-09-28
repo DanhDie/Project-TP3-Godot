@@ -3,8 +3,9 @@ using System;
 
 public partial class Inimigo : CharacterBody2D
 {
-	[Export] private Personagem player;
 	[Export] private float velocidade = 200.0f;
+	[Export] private int dano = 2;
+	[Export] private Personagem player;
 	[Export] private AnimatedSprite2D animatedSprite;
 
 	private Area2D area2D;
@@ -31,7 +32,7 @@ public partial class Inimigo : CharacterBody2D
 	{
 		if (body is Personagem player)
 		{
-			player.GetNode<HealthComponent>("HealthComponent").takeDamage(1);
+			player.GetNode<HealthComponent>("HealthComponent").takeDamage(dano);
 		}
 	}
 }

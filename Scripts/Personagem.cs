@@ -6,6 +6,9 @@ public partial class Personagem : CharacterBody2D
     [Export] public float velocidade = 400.0f;
     [Export] private AnimatedSprite2D animatedSprite;
     [Export] private PackedScene tiroAtual;
+    [Export] private float tempoInvul = 1.0f;
+
+    private CollisionShape2D collisionShape;
 
     private enum Estado
     {
@@ -22,6 +25,7 @@ public partial class Personagem : CharacterBody2D
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
     }
     public override void _Process(double delta)
     {

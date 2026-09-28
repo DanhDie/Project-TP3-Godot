@@ -9,9 +9,16 @@ public partial class RajadaMistica : Area2D
     [Export] float alcance = 1000;
     [Export] float dano = 2;
     private float distanciaPercorrida = 0;
+    [Export] private float taxaCrescimento = 1.01f;
+    public override void _Ready()
+    {
+        Scale = new Vector2(.5f, .5f);
+    }
     public override void _PhysicsProcess(double delta)
     {
         moverProjetil(Rotation, (float)delta);
+        aumentarProjetil();
+
     }
 
     private void moverProjetil(float rotation, float delta) {
@@ -33,6 +40,20 @@ public partial class RajadaMistica : Area2D
         {
            HealthComponent bodyHealth = body.GetNode<HealthComponent>("HealthComponent");
             bodyHealth.takeDamage(dano);
+        }
+    }
+
+    private void aumentarProjetil()
+    {
+        if (Scale.X < 1.0f)
+        {
+            Scale *= taxaCrescimento;
+
+            // Impede que passe de 1
+            Scale = Scale.Clamp(
+                new Vector2(0.0f, 0.0f),
+                Vector2.One
+            );
         }
     }
 }
