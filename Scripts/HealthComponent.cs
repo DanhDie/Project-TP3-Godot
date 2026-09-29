@@ -9,11 +9,13 @@ public partial class HealthComponent : Node2D
 	[Export] private Timer invulFrames = null;
 	[Export] private float invulTime = 0f;
 
+	[Export] private Godot.AnimationPlayer hitAnimator;
+
 	DisplayNumberManager displayNumber;
     public override void _Ready()
     {
         displayNumber = GetNode<DisplayNumberManager>("/root/DisplayNumberManager");
-
+        //hitAnimator.Play("hitFlash");
         health = maxHealth;
     }
 
@@ -26,7 +28,7 @@ public partial class HealthComponent : Node2D
                 canBeDamaged = false;
             }
             displayNumber.displayNumber(damage, this.GlobalPosition);
-
+			hitAnimator.Play("hitFlash");
             health -= damage;		
             if (health <= 0)
             {

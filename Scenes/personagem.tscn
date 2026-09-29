@@ -3,10 +3,16 @@
 [ext_resource type="Script" uid="uid://bam31tsjnjh0f" path="res://Scripts/Personagem.cs" id="1_vvf27"]
 [ext_resource type="PackedScene" uid="uid://b1bmrnjiymy7v" path="res://Scenes/rajada_mistica.tscn" id="2_cu32d"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="2_o47jk"]
+[ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="3_g2n7u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
 height = 26.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qkwde"]
+shader = ExtResource("3_g2n7u")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_o47jk"]
 _data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAAC+AwAAUklGRrYDAABXRUJQVlA4TKkDAAAv/8A/EGegqJEkZfH8ezojfE9GKUojSWEY2kDTv4vtMPjkUEoDAE04Av5/ikSae3QJ8x8AwFUc0jLEbKC62+8PUTEsajdFyLpu/QZZtW0HEfMsxMKzMBaehVjAAhZiIRawgIWjKoQpl6x5/Wsj+g/JbRtBkjyzu31T1PsK+7fA9n0HlmuTOHuZxrIuu/vsLXfJi91nnFVduFGQu2QFXkqM+fjIXZRvRNQXupATQIlpDqzoAvgsjuldkiKiBJ8P4RHoXR56+yw+uopdssK+37Wki/2hq9YlLYyyXWzOG12e4ZQqvdcvD4lxlHPMDxZ1Mc6zbNvGQOiSGkSc0yKQu6jeVe6SGPU8xs4a6F1U7xe6JIVB6631xqouBpd17/J7TQwb9D4wucsb3nKXrOBy4hJf59UmL0z0ankxK1/iy7zaMJpQvTLg5/fffzJj33fgL+69l2nId+XvLWt7YdVdu9/Ede+swGeKO3IXwTvGfHzkLjkBPnn5BSu6ACWmOSB3yYla/XZWrazoQkQJPh/CI9C7/DzPH6ernDXvxb7fZXKXnDD8NszULo/FynaxXd56l6Q4/HQ//cD0Lo+9y3mek7feJSeo9ZxW67L3cvOOQO2SFnEn0Ls85xh7DhFfuuSEQZ+G/l4E79Zb603wvnWpaWE3hpXa5bnYoDMw07v8PJI2vTfdS+qGXVUkr8ktK2alS0z2EpEGlzcZ8PP77z+Zse878BdnL9NYnY282X3GWXXX7rM4cpe0wEuJMR+fRXdxoyB3SQqgxDQH1LuUb0TUF7qQFBEl+HwIj2DFXYDP4S5U75yw7w9L7iLC53B6l7QwynaxOWvushe7JMZRzjE/UO8SoNTZS/VOCyLOafUxfr9L0S7btqF5p8cx9hzjdtdz6nlc3V7wTguD1lvrDcT/C0X7PKZu8v9VzQsb0AemvNgxTPEe65jqnRkGRlfE57s60peuedNbA/t9pGnYRRdB9LaLlgE/v//+kzr7vgP5e4taoleZJoq/450Wu7vqVSZcEnvNOytw18TxmeKOeNcr3r+P8I2I+lj7lsUvkO96wTsjAC9x7TG1+u2sWtHvkr1zImLA5wOmPHrx6/mFLrp3Rpj8YIbfxgtddO+kcEoVOfx0P/1A7yJ7Z4XBWbZtQ6Ce02qwqGvcvfMiYvJaBvXuVUmbynEcAkafhv5e47HY3dsyQBBrDZMAqduXLpp3ZnA5N+kzOfNCF0kMy47hpfDFSbvr3kVyz4B/Cc0AAA==")
@@ -163,6 +169,43 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_of3jj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fokg4"]
+resource_name = "hitFlash"
+length = 0.19999999999999998
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.019119037, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6qw1n"]
+_data = {
+&"RESET": SubResource("Animation_of3jj"),
+&"hitFlash": SubResource("Animation_fokg4")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqvok"]
 radius = 11.0
 
@@ -178,6 +221,7 @@ shape = SubResource("CapsuleShape2D_qpp8r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1031210519]
 texture_filter = 1
+material = SubResource("ShaderMaterial_qkwde")
 sprite_frames = SubResource("SpriteFrames_ppowf")
 animation = &"idle_lado"
 metadata/_aseprite_wizard_interface_config_ = {
@@ -202,9 +246,14 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "230043a032d7ef2d670bc16dc232610a"
 
-[node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("invulFrames") instance=ExtResource("2_o47jk")]
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=1664434840]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_6qw1n")
+
+[node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("invulFrames", "hitAnimator") instance=ExtResource("2_o47jk")]
 invulFrames = NodePath("InvulnerableTimer")
 invulTime = 1.0
+hitAnimator = NodePath("../AnimatedSprite2D/HitFlashAnimationPlayer")
 
 [node name="InvulnerableTimer" type="Timer" parent="HealthComponent" unique_id=1427544082]
 one_shot = true
