@@ -3,8 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\rajadamistica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\rajadamistica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scenes\\Main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scenes\\Main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TransicionScene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\TransicionScene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TelaInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\TelaInicial.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\singleton\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\singleton\\gamemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Singleton\\CursorManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Scripts\\Singleton\\CursorManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\contador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\contador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\healthplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,12 +35,16 @@
       "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\healthcomponent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\rajadamistica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\rajadamistica.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\personagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\personagem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|c:\\users\\daniel\\onedrive\\dev\\godot\\games\\project_tp_3\\scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2FF06286-F0B3-4B98-8884-B588A6A79185}|ProjectTP3.csproj|solutionrelative:scripts\\inimigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -35,19 +59,97 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Main.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scenes\\Main.cs",
+              "RelativeDocumentMoniker": "Scenes\\Main.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scenes\\Main.cs",
+              "RelativeToolTip": "Scenes\\Main.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T21:16:50.488Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransicionScene.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TransicionScene.cs",
+              "RelativeDocumentMoniker": "Scripts\\TransicionScene.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TransicionScene.cs",
+              "RelativeToolTip": "Scripts\\TransicionScene.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T20:41:20.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CursorManager.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Singleton\\CursorManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Singleton\\CursorManager.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Singleton\\CursorManager.cs",
+              "RelativeToolTip": "Scripts\\Singleton\\CursorManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T20:21:11.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Contador.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Contador.cs",
+              "RelativeDocumentMoniker": "Scripts\\Contador.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Contador.cs",
+              "RelativeToolTip": "Scripts\\Contador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T20:08:16.334Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GameManager.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Singleton\\GameManager.cs",
+              "RelativeDocumentMoniker": "Scripts\\Singleton\\GameManager.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Singleton\\GameManager.cs",
+              "RelativeToolTip": "Scripts\\Singleton\\GameManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T20:04:49.98Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TelaInicial.cs",
+              "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TelaInicial.cs",
+              "RelativeDocumentMoniker": "Scripts\\TelaInicial.cs",
+              "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\TelaInicial.cs",
+              "RelativeToolTip": "Scripts\\TelaInicial.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-28T19:57:13.581Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "RajadaMistica.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\RajadaMistica.cs",
               "RelativeDocumentMoniker": "Scripts\\RajadaMistica.cs",
               "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\RajadaMistica.cs",
               "RelativeToolTip": "Scripts\\RajadaMistica.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAmwCwAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADMAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-28T18:36:39.47Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 7,
               "Title": "HealthComponent.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\HealthComponent.cs",
               "RelativeDocumentMoniker": "Scripts\\HealthComponent.cs",
@@ -55,11 +157,12 @@
               "RelativeToolTip": "Scripts\\HealthComponent.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T19:42:59.663Z"
+              "WhenOpened": "2026-08-25T19:42:59.663Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 6,
               "Title": "HealthPlayer.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\HealthPlayer.cs",
               "RelativeDocumentMoniker": "Scripts\\HealthPlayer.cs",
@@ -72,7 +175,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "Inimigo.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Inimigo.cs",
               "RelativeDocumentMoniker": "Scripts\\Inimigo.cs",
@@ -80,19 +183,21 @@
               "RelativeToolTip": "Scripts\\Inimigo.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T18:57:26.771Z"
+              "WhenOpened": "2026-08-25T18:57:26.771Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 9,
               "Title": "Personagem.cs",
               "DocumentMoniker": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Personagem.cs",
               "RelativeDocumentMoniker": "Scripts\\Personagem.cs",
               "ToolTip": "C:\\Users\\Daniel\\OneDrive\\Dev\\Godot\\Games\\project_tp_3\\Scripts\\Personagem.cs",
               "RelativeToolTip": "Scripts\\Personagem.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAwwE4AAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE4AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-08-25T18:28:24.911Z"
+              "WhenOpened": "2026-08-25T18:28:24.911Z",
+              "EditorCaption": ""
             }
           ]
         }
