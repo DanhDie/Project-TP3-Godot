@@ -49,6 +49,9 @@ collision_mask = 2
 script = ExtResource("1_1vr66")
 velocidade = 50.0
 
+[node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("5_qpp8r")]
+position = Vector2(0, -25)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761500617]
 light_mask = 2
 visibility_layer = 2
@@ -110,7 +113,5 @@ texture_under = ExtResource("2_ayero")
 texture_progress = ExtResource("3_qpp8r")
 script = ExtResource("4_fokg4")
 player = NodePath("..")
-
-[node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("5_qpp8r")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

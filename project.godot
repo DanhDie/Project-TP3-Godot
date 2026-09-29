@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GameManager="*uid://u2fgev5cduf6"
 CursorManager="*uid://c82xwqhultcbu"
 TransicionScene="*uid://do1ja2mxn2fyo"
+DisplayNumberManager="*uid://cslrxwccuxjph"
 
 [display]
 

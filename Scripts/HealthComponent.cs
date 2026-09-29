@@ -8,17 +8,26 @@ public partial class HealthComponent : Node2D
 	[Export] private bool canBeDamaged = true;
 	[Export] private Timer invulFrames = null;
 	[Export] private float invulTime = 0f;
-    public override void _Ready()
-	{
-		health = maxHealth;
-	}
 
-	public void takeDamage(float damage){
+	DisplayNumberManager displayNumber;
+    public override void _Ready()
+    {
+        displayNumber = GetNode<DisplayNumberManager>("/root/DisplayNumberManager");
+
+        health = maxHealth;
+    }
+
+    public void takeDamage(float damage){
 		if (canBeDamaged)
 		{
-            health -= damage;
-			invulFrames.Start();
-			canBeDamaged = false;
+            if (invulFrames != null)
+            {
+                invulFrames.Start();
+                canBeDamaged = false;
+            }
+            displayNumber.displayNumber(damage, this.GlobalPosition);
+
+            health -= damage;		
             if (health <= 0)
             {
                 health = 0;
