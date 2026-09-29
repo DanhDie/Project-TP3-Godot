@@ -141,6 +141,5 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     {
         EmitSignal(SignalName.PlayerMorreu);
         GetTree().Paused = true;
-        QueueFree();
     }
 }
