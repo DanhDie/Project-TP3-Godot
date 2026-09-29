@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cnom327k1u6gw" path="res://Scenes/Main.cs" id="1_6bp64"]
 [ext_resource type="PackedScene" uid="uid://dh3vvdyr5t8pc" path="res://Scenes/personagem.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://b8bua2sredf4j" path="res://Scenes/enemy_spawner.tscn" id="2_344ge"]
 [ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="3_8gbba"]
 [ext_resource type="Texture2D" uid="uid://dpaba7x2uwphu" path="res://Assets/Layout/fundo_barra.png" id="3_kry3j"]
 [ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="4_21xkr"]
@@ -12,12 +12,11 @@
 [node name="Main" type="Node2D" unique_id=1557181432]
 script = ExtResource("1_6bp64")
 
+[node name="EnemySpawner" parent="." unique_id=36492877 node_paths=PackedStringArray("player") instance=ExtResource("2_344ge")]
+player = NodePath("../Personagem")
+
 [node name="Personagem" parent="." unique_id=1116870951 instance=ExtResource("1_ig7tw")]
 position = Vector2(317, 184)
-
-[node name="Inimigo" parent="." unique_id=1976030229 node_paths=PackedStringArray("player") instance=ExtResource("2_bo1nx")]
-position = Vector2(92, 101)
-player = NodePath("../Personagem")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1851905540]
 

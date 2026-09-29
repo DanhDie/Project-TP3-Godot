@@ -4,8 +4,8 @@ using System;
 public partial class Inimigo : CharacterBody2D
 {
 	[Export] private float velocidade = 200.0f;
-	[Export] private int dano = 2;
-	[Export] private Personagem player;
+	[Export] public int dano = 2;
+	[Export] public Personagem player;
 	[Export] private AnimatedSprite2D animatedSprite;
 
 	private Area2D area2D;

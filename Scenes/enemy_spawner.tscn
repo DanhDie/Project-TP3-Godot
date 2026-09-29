@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b8bua2sredf4j"]
+
+[ext_resource type="Script" uid="uid://dlwvbukypwshy" path="res://Scripts/EnemySpawner.cs" id="1_8h7h8"]
+[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_cdqhx"]
+
+[node name="EnemySpawner" type="Node2D" unique_id=36492877]
+script = ExtResource("1_8h7h8")
+enemy = ExtResource("2_cdqhx")
+
+[node name="Pattern" type="Timer" parent="." unique_id=1473160951]
+wait_time = 10.0
+autostart = true
+
+[node name="Elite" type="Timer" parent="." unique_id=1737149320]
+wait_time = 5.0
+autostart = true
+
+[node name="Timer" type="Timer" parent="." unique_id=627117829]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_OnTimeOut"]

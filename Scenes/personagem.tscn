@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://dlkd4w4nqqg8i" path="res://Scripts/InvulComponent.cs" id="4_g2n7u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
-radius = 10.74
-height = 28.0
+radius = 9.905
+height = 26.0
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_o47jk"]
 _data = PackedByteArray("AAADAAUAAAABAAAAAAEAAAABAAC+AwAAUklGRrYDAABXRUJQVlA4TKkDAAAv/8A/EGegqJEkZfH8ezojfE9GKUojSWEY2kDTv4vtMPjkUEoDAE04Av5/ikSae3QJ8x8AwFUc0jLEbKC62+8PUTEsajdFyLpu/QZZtW0HEfMsxMKzMBaehVjAAhZiIRawgIWjKoQpl6x5/Wsj+g/JbRtBkjyzu31T1PsK+7fA9n0HlmuTOHuZxrIuu/vsLXfJi91nnFVduFGQu2QFXkqM+fjIXZRvRNQXupATQIlpDqzoAvgsjuldkiKiBJ8P4RHoXR56+yw+uopdssK+37Wki/2hq9YlLYyyXWzOG12e4ZQqvdcvD4lxlHPMDxZ1Mc6zbNvGQOiSGkSc0yKQu6jeVe6SGPU8xs4a6F1U7xe6JIVB6631xqouBpd17/J7TQwb9D4wucsb3nKXrOBy4hJf59UmL0z0ankxK1/iy7zaMJpQvTLg5/fffzJj33fgL+69l2nId+XvLWt7YdVdu9/Ede+swGeKO3IXwTvGfHzkLjkBPnn5BSu6ACWmOSB3yYla/XZWrazoQkQJPh/CI9C7/DzPH6ernDXvxb7fZXKXnDD8NszULo/FynaxXd56l6Q4/HQ//cD0Lo+9y3mek7feJSeo9ZxW67L3cvOOQO2SFnEn0Ls85xh7DhFfuuSEQZ+G/l4E79Zb603wvnWpaWE3hpXa5bnYoDMw07v8PJI2vTfdS+qGXVUkr8ktK2alS0z2EpEGlzcZ8PP77z+Zse878BdnL9NYnY282X3GWXXX7rM4cpe0wEuJMR+fRXdxoyB3SQqgxDQH1LuUb0TUF7qQFBEl+HwIj2DFXYDP4S5U75yw7w9L7iLC53B6l7QwynaxOWvushe7JMZRzjE/UO8SoNTZS/VOCyLOafUxfr9L0S7btqF5p8cx9hzjdtdz6nlc3V7wTguD1lvrDcT/C0X7PKZu8v9VzQsb0AemvNgxTPEe65jqnRkGRlfE57s60peuedNbA/t9pGnYRRdB9LaLlgE/v//+kzr7vgP5e4taoleZJoq/450Wu7vqVSZcEnvNOytw18TxmeKOeNcr3r+P8I2I+lj7lsUvkO96wTsjAC9x7TG1+u2sWtHvkr1zImLA5wOmPHrx6/mFLrp3Rpj8YIbfxgtddO+kcEoVOfx0P/1A7yJ7Z4XBWbZtQ6Ce02qwqGvcvfMiYvJaBvXuVUmbynEcAkafhv5e47HY3dsyQBBrDZMAqduXLpp3ZnA5N+kzOfNCF0kMy47hpfDFSbvr3kVyz4B/Cc0AAA==")
@@ -164,9 +164,10 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqvok"]
+radius = 11.0
+
 [node name="Personagem" type="CharacterBody2D" unique_id=1116870951 node_paths=PackedStringArray("animatedSprite")]
-collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_vvf27")
 velocidade = 200.0
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -210,3 +211,14 @@ script = ExtResource("4_g2n7u")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685226919]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="DamageArea" type="Area2D" parent="." unique_id=1696571589]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=257742561]
+position = Vector2(-2, -1)
+shape = SubResource("CapsuleShape2D_mqvok")
+debug_color = Color(0.674176, 0.40751508, 0.7823852, 0.41960785)
+
+[connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]

@@ -45,11 +45,13 @@ animations = [{
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1976030229]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_1vr66")
 velocidade = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761500617]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(-0.115, -2.325)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_o47jk")
