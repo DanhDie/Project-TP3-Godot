@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bam31tsjnjh0f" path="res://Scripts/Personagem.cs" id="1_vvf27"]
 [ext_resource type="PackedScene" uid="uid://b1bmrnjiymy7v" path="res://Scenes/rajada_mistica.tscn" id="2_cu32d"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="2_o47jk"]
-[ext_resource type="Script" uid="uid://dlkd4w4nqqg8i" path="res://Scripts/InvulComponent.cs" id="4_g2n7u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
@@ -203,10 +202,12 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "230043a032d7ef2d670bc16dc232610a"
 
-[node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("2_o47jk")]
+[node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("invulFrames") instance=ExtResource("2_o47jk")]
+invulFrames = NodePath("InvulnerableTimer")
+invulTime = 1.0
 
-[node name="InvulComponent" type="Node2D" parent="HealthComponent" unique_id=1729850374]
-script = ExtResource("4_g2n7u")
+[node name="InvulnerableTimer" type="Timer" parent="HealthComponent" unique_id=1427544082]
+one_shot = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685226919]
 drag_horizontal_enabled = true
@@ -221,4 +222,5 @@ position = Vector2(-2, -1)
 shape = SubResource("CapsuleShape2D_mqvok")
 debug_color = Color(0.674176, 0.40751508, 0.7823852, 0.41960785)
 
+[connection signal="timeout" from="HealthComponent/InvulnerableTimer" to="HealthComponent" method="_whenInvulTimeOut"]
 [connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]

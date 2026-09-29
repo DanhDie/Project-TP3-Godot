@@ -10,12 +10,25 @@ public partial class EnemySpawner : Node2D
     GameManager GameManager;
 
 	private float distance = 400f;
+    private bool canSpawn = true;
     private int seconds;
     public override void _Ready()
     {
     }
+    public override void _PhysicsProcess(double delta)
+    {
+        if (GetTree().GetNodeCountInGroup("EnemyBasic") > 700)
+        {
+            canSpawn = false;
+        }
+        else
+        {
+            canSpawn = true;
+        }
+    }
 
-	private void spawnEnemy(Vector2 position)
+
+    private void spawnEnemy(Vector2 position)
 	{
         var enemyInstance = enemy.Instantiate() as Inimigo;
 
@@ -33,9 +46,12 @@ public partial class EnemySpawner : Node2D
 
     private void amountSpawn(int n = 1)
     {
-        for (int i = 0; i < n; i++)
+        if (canSpawn)
         {
-            spawnEnemy(getRandomPos());
+            for (int i = 0; i < n; i++)
+            {
+                spawnEnemy(getRandomPos());
+            }
         }
     }
 
