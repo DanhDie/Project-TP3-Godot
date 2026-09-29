@@ -1,0 +1,89 @@
+[gd_scene format=3 uid="uid://c6l8jcmk0nckl"]
+
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="1_8eew3"]
+[ext_resource type="Script" uid="uid://d1wya4o20nkcq" path="res://Scripts/TelaMorte.cs" id="2_g0u8y"]
+[ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="2_gu227"]
+
+[node name="TelaMorte" type="Control" unique_id=599324390 node_paths=PackedStringArray("score")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_8eew3")
+script = ExtResource("2_g0u8y")
+score = NodePath("CenterContainer/VBoxContainer/VBoxContainer/ScoreTitulo2")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1886032625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.14207491, 0.13913658, 0.14501259, 0.91764706)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=380114551]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1815888123]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=1732420254]
+layout_mode = 2
+theme_type_variation = &"RichTextLabelTittle"
+theme_override_colors/default_color = Color(0.96862745, 0.96862745, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.81960785, 0.20392157, 0.35686275, 1)
+bbcode_enabled = true
+text = "[shake rate=10 level=10]Game over
+"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer/VBoxContainer" unique_id=1449775613]
+layout_mode = 2
+theme_override_constants/separation = -20
+
+[node name="ScoreTitulo" type="RichTextLabel" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=1532799769]
+layout_mode = 2
+theme_type_variation = &"RichTextLabelSubTittle"
+theme_override_colors/default_color = Color(1, 0.78431374, 0.34117648, 1)
+text = "Score Final:
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreTitulo2" type="RichTextLabel" parent="CenterContainer/VBoxContainer/VBoxContainer" unique_id=801329732]
+layout_mode = 2
+theme_type_variation = &"RichTextLabelTittle"
+theme_override_colors/default_color = Color(0.96862745, 0.96862745, 1, 1)
+theme_override_font_sizes/normal_font_size = 55
+bbcode_enabled = true
+text = "10
+"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgain" parent="CenterContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("2_gu227")]
+layout_mode = 2
+theme = ExtResource("1_8eew3")
+text = "Tentar Novamente"
+
+[node name="Sair" parent="CenterContainer/VBoxContainer" unique_id=1777187684 instance=ExtResource("2_gu227")]
+layout_mode = 2
+text = "Sair
+"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/TryAgain" to="." method="_OnRestartPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Sair" to="." method="_OnExitPressed"]

@@ -14,8 +14,11 @@ public partial class HealthComponent : Node2D
 		health-=damage;
 		if(health<=0){
 			health = 0;
-			GetParent().QueueFree();
-		}
+            if (GetParent() is IDestrutivel destrutivel)
+            {
+                destrutivel.destruirSe();
+            }
+        }
 	}
 	
 	public void healHealth(float amount){

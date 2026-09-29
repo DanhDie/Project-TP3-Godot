@@ -1,14 +1,17 @@
 using Godot;
 using System;
 
-public partial class Inimigo : CharacterBody2D
+public partial class Inimigo : CharacterBody2D, IDestrutivel
 {
 	[Export] private float velocidade = 200.0f;
 	[Export] public int dano = 2;
-	[Export] public Personagem player;
+	[Export] public int morteValue = 1;
+    [Export] public Personagem player;
 	[Export] private AnimatedSprite2D animatedSprite;
 
 	private Area2D area2D;
+
+	GameManager gameManager;
 
 	public override void _Ready()
 	{
@@ -16,8 +19,10 @@ public partial class Inimigo : CharacterBody2D
 		area2D = GetNode<Area2D>("Area2D");
 		area2D.BodyEntered += OnArea2DAreaEntered;
 		animatedSprite.Play("default");
-	}
-	public override void _PhysicsProcess(double delta)
+        gameManager = GetNode<GameManager>("/root/GameManager");
+
+    }
+    public override void _PhysicsProcess(double delta)
 	{
 		//checar se player esta presente
 		if (player != null)
@@ -35,4 +40,10 @@ public partial class Inimigo : CharacterBody2D
 			player.GetNode<HealthComponent>("HealthComponent").takeDamage(dano);
 		}
 	}
+
+    public void destruirSe()
+    {
+		gameManager.aumentarPontuacao(morteValue);
+        QueueFree();
+    }
 }

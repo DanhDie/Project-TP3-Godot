@@ -1,12 +1,14 @@
 using Godot;
 using System;
 
-public partial class Personagem : CharacterBody2D
+public partial class Personagem : CharacterBody2D, IDestrutivel
 {
+    [Signal] public delegate void PlayerMorreuEventHandler();
     [Export] public float velocidade = 400.0f;
     [Export] private AnimatedSprite2D animatedSprite;
     [Export] private PackedScene tiroAtual;
     [Export] private float tempoInvul = 1.0f;
+    
 
     private CollisionShape2D collisionShape;
     private HealthComponent healthPlayer;
@@ -133,5 +135,12 @@ public partial class Personagem : CharacterBody2D
         {
             healthPlayer.takeDamage(inimigo.dano);
         }
+    }
+
+    public void destruirSe()
+    {
+        EmitSignal(SignalName.PlayerMorreu);
+        GetTree().Paused = true;
+        QueueFree();
     }
 }
