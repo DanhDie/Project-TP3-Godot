@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://drxgghl43g43k"]
+
+[ext_resource type="Script" uid="uid://cnom327k1u6gw" path="res://Scenes/Main.cs" id="1_6bp64"]
+[ext_resource type="PackedScene" uid="uid://dh3vvdyr5t8pc" path="res://Scenes/personagem.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_bo1nx"]
+[ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="3_8gbba"]
+[ext_resource type="Texture2D" uid="uid://dpaba7x2uwphu" path="res://Assets/Layout/fundo_barra.png" id="3_kry3j"]
+[ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="4_21xkr"]
+[ext_resource type="Script" uid="uid://b3tckien8ej54" path="res://Scripts/Contador.cs" id="6_6bp64"]
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
+
+[node name="Main" type="Node2D" unique_id=1557181432]
+script = ExtResource("1_6bp64")
+
+[node name="Personagem" parent="." unique_id=1116870951 instance=ExtResource("1_ig7tw")]
+position = Vector2(317, 184)
+
+[node name="Inimigo" parent="." unique_id=1976030229 node_paths=PackedStringArray("player") instance=ExtResource("2_bo1nx")]
+position = Vector2(92, 101)
+player = NodePath("../Personagem")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1851905540]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=687036797 node_paths=PackedStringArray("player")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -211.0
+offset_top = 9.0
+offset_right = -5.160034
+offset_bottom = 41.0
+grow_horizontal = 0
+nine_patch_stretch = true
+stretch_margin_left = 14
+stretch_margin_top = 14
+stretch_margin_right = 14
+stretch_margin_bottom = 14
+texture_under = ExtResource("3_kry3j")
+texture_progress = ExtResource("4_21xkr")
+script = ExtResource("3_8gbba")
+player = NodePath("../../Personagem")
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1637741728]
+offset_left = 304.0
+offset_top = 10.0
+offset_right = 344.0
+offset_bottom = 33.0
+theme = ExtResource("7_344ge")
+text = "100"
+script = ExtResource("6_6bp64")

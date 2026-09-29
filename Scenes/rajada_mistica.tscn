@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b1bmrnjiymy7v"]
+
+[ext_resource type="Script" uid="uid://cp8trfo0m4kuo" path="res://RajadaMistica.cs" id="1_24p61"]
+[ext_resource type="Texture2D" uid="uid://3ht6ohqx6j8k" path="res://Assets/Morax/rajadaMistica.png" id="2_5m2c6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj4t2"]
+radius = 10.049875
+
+[node name="RajadaMistica" type="Area2D" unique_id=1529545591]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_24p61")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624684013]
+position = Vector2(-13, 0)
+texture = ExtResource("2_5m2c6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=978341974]
+shape = SubResource("CircleShape2D_bj4t2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

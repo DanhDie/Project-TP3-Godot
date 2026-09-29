@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://b024tf2wpju06"
+path="res://.godot/imported/morax.aseprite-50564ff8b176db721538ebfadf22d4a5.res"
+
+[deps]
+
+source_file="res://Assets/Animations/morax.aseprite"
+dest_files=["res://.godot/imported/morax.aseprite-50564ff8b176db721538ebfadf22d4a5.res"]
+
+[params]
+
