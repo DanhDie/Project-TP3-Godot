@@ -42,8 +42,10 @@ public partial class RajadaMistica : Area2D
         this.QueueFree();
         if (body.HasNode("HealthComponent"))
         {
-           HealthComponent bodyHealth = body.GetNode<HealthComponent>("HealthComponent");
+            HealthComponent bodyHealth = body.GetNode<HealthComponent>("HealthComponent");
             bodyHealth.takeDamage(dano);
+            LifeBar lifeBar = body.GetNode<LifeBar>("LifeBar");
+            lifeBar.atualizarVida();
         }
     }
 

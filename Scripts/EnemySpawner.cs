@@ -6,6 +6,7 @@ public partial class EnemySpawner : Node2D
 {
 	[Export] private Personagem player;
 	[Export] private PackedScene enemy;
+    [Export] private Godot.Collections.Array<PackedScene> enemies;
 
     GameManager GameManager;
 
@@ -28,15 +29,33 @@ public partial class EnemySpawner : Node2D
     }
 
 
+//    private void spawnEnemy(Vector2 position)
+//	{
+//        var enemyInstance = enemy.Instantiate() as Inimigo;
+//
+//       enemyInstance.Position = position;
+//        enemyInstance.player = player;
+//
+//        GetTree().CurrentScene.AddChild(enemyInstance);
+//    }
+
     private void spawnEnemy(Vector2 position)
-	{
-        var enemyInstance = enemy.Instantiate() as Inimigo;
+    {
+        if (enemies.Count == 0)
+            return;
+
+        int index = GD.RandRange(0, enemies.Count - 1);
+
+        PackedScene enemyScene = enemies[index];
+
+        var enemyInstance = enemyScene.Instantiate() as Inimigo;
 
         enemyInstance.Position = position;
         enemyInstance.player = player;
 
         GetTree().CurrentScene.AddChild(enemyInstance);
     }
+
 
     private Vector2 getRandomPos()
     {

@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://b8bua2sredf4j"]
 
 [ext_resource type="Script" uid="uid://dlwvbukypwshy" path="res://Scripts/EnemySpawner.cs" id="1_8h7h8"]
-[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="2_cdqhx"]
+[ext_resource type="PackedScene" uid="uid://bhoc5xsojqmwx" path="res://Scenes/zombie.tscn" id="3_tdwud"]
+[ext_resource type="PackedScene" uid="uid://ca6jobro2hqwm" path="res://Scenes/morcego.tscn" id="4_gga2x"]
 
 [node name="EnemySpawner" type="Node2D" unique_id=36492877]
 script = ExtResource("1_8h7h8")
-enemy = ExtResource("2_cdqhx")
+enemies = Array[PackedScene]([ExtResource("3_tdwud"), ExtResource("4_gga2x")])
 
 [node name="Pattern" type="Timer" parent="." unique_id=1473160951]
 wait_time = 10.0
