@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dw0jlafro21ne"]
+
+[ext_resource type="PackedScene" uid="uid://bhoc5xsojqmwx" path="res://Scenes/zombie.tscn" id="1_tqwci"]
+[ext_resource type="Shader" uid="uid://cbo234m86b7f" path="res://ColorChange.tres" id="2_jl10b"]
+[ext_resource type="Shader" uid="uid://cmyw80ahkt7g" path="res://flashAndColor.tres" id="3_o1t1i"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqhx"]
+shader = ExtResource("2_jl10b")
+shader_parameter/tint = Color(0.639216, 0.454902, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muk7n"]
+resource_local_to_scene = true
+shader = ExtResource("3_o1t1i")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+shader_parameter/NEWcolor = Color(0.733333, 0.447059, 1, 1)
+
+[node name="ZombieBoss" unique_id=1976030229 instance=ExtResource("1_tqwci")]
+material = SubResource("ShaderMaterial_cdqhx")
+velocidade = 100.0
+dano = 7
+morteValue = 50
+
+[node name="HealthComponent" parent="." index="0" unique_id=1010483348]
+maxHealth = 40.0
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1962497488]
+material = SubResource("ShaderMaterial_muk7n")

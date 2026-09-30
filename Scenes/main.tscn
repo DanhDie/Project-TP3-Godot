@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://cw2uij5ytidnf" path="res://Scenes/tela_pause.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c6l8jcmk0nckl" path="res://Scenes/tela_morte.tscn" id="10_hptm8"]
+[ext_resource type="Script" uid="uid://con2vn53ctcbu" path="res://Scripts/Waves.cs" id="11_6iyac"]
 [ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
@@ -43,13 +44,34 @@ script = ExtResource("3_8gbba")
 player = NodePath("../../Personagem")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1637741728]
-offset_left = 304.0
-offset_top = 10.0
-offset_right = 344.0
-offset_bottom = 33.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+size_flags_horizontal = 4
 theme = ExtResource("7_344ge")
-text = "100"
+text = "00;00"
 script = ExtResource("6_6bp64")
+
+[node name="Waves" type="Label" parent="CanvasLayer" unique_id=103619843]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -28.0
+offset_top = 15.0
+offset_right = 28.0
+offset_bottom = 42.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("7_344ge")
+theme_override_font_sizes/font_size = 17
+text = "Onda 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("11_6iyac")
 
 [node name="TelaPause" parent="CanvasLayer" unique_id=1659098915 instance=ExtResource("9_ynf5e")]
 visible = false

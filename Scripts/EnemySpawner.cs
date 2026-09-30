@@ -6,15 +6,19 @@ public partial class EnemySpawner : Node2D
 {
 	[Export] private Personagem player;
 	[Export] private PackedScene enemy;
+	[Export] private int spawnFreq;
     [Export] private Godot.Collections.Array<PackedScene> enemies;
-
+    [Export] private Godot.Collections.Array<PackedScene> elites;
+    [Export] private Godot.Collections.Array<PackedScene> bosses;
+    private int indexEnemy = 0;
+    private int waveCounter = 0;
     GameManager GameManager;
-
 	private float distance = 400f;
     private bool canSpawn = true;
     private int seconds;
     public override void _Ready()
     {
+        indexEnemy = GD.RandRange(0, enemies.Count - 1);
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -29,24 +33,24 @@ public partial class EnemySpawner : Node2D
     }
 
 
-//    private void spawnEnemy(Vector2 position)
-//	{
-//        var enemyInstance = enemy.Instantiate() as Inimigo;
-//
-//       enemyInstance.Position = position;
-//        enemyInstance.player = player;
-//
-//        GetTree().CurrentScene.AddChild(enemyInstance);
-//    }
+    //    private void spawnEnemy(Vector2 position)
+    //	{
+    //        var enemyInstance = enemy.Instantiate() as Inimigo;
+    //
+    //       enemyInstance.Position = position;
+    //        enemyInstance.player = player;
+    //
+    //        GetTree().CurrentScene.AddChild(enemyInstance);
+    //    }
 
-    private void spawnEnemy(Vector2 position)
+    private void spawnEnemy(Vector2 position, Godot.Collections.Array<PackedScene> enemyList, int index)
     {
-        if (enemies.Count == 0)
+        if (enemyList.Count == 0)
             return;
+        if (index >= enemyList.Count)
+            index = 0;
 
-        int index = GD.RandRange(0, enemies.Count - 1);
-
-        PackedScene enemyScene = enemies[index];
+        PackedScene enemyScene = enemyList[index];
 
         var enemyInstance = enemyScene.Instantiate() as Inimigo;
 
@@ -69,7 +73,7 @@ public partial class EnemySpawner : Node2D
         {
             for (int i = 0; i < n; i++)
             {
-                spawnEnemy(getRandomPos());
+                spawnEnemy(getRandomPos(),enemies, indexEnemy);
             }
         }
     }
@@ -77,6 +81,52 @@ public partial class EnemySpawner : Node2D
     public void _OnTimeOut()
     {
         seconds++;
-        amountSpawn(seconds % 10);
+        amountSpawn(seconds % spawnFreq);
     }
+
+    public void _OnPatternTimeoutEnemyChange()
+    {
+        indexEnemy = GD.RandRange(0, enemies.Count - 1);
+    }
+
+    public void _OnPatternTimeoutCircle()
+    {
+        if (!canSpawn || enemies.Count == 0)
+            return;
+
+        int amount = 20+spawnFreq*10;
+        float radius = 300f;
+
+        indexEnemy = GD.RandRange(0, enemies.Count - 1);
+
+        for (int i = 0; i < amount; i++)
+        {
+            float angle = Mathf.Tau * i / amount;
+
+            Vector2 position = player.Position +
+                               Vector2.Right.Rotated(angle) * radius;
+
+            spawnEnemy(position, enemies, indexEnemy);
+        }
+    }
+
+    public void _OnEliteTimeOutUpFrequency()
+    {
+        waveCounter++;
+        if (waveCounter % 2 == 0)
+        {
+            spawnFreq++;
+        }
+    }
+
+    public void _OnEliteTimeOutSpawn()
+    {
+        spawnEnemy(getRandomPos(), elites, GD.RandRange(0, elites.Count - 1));
+    }
+
+    public void _OnBossTimeOutSpawn()
+    {
+        spawnEnemy(getRandomPos(), bosses, waveCounter);
+    }
+
 }
