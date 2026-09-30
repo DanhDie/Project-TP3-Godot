@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://b1bmrnjiymy7v" path="res://Scenes/rajada_mistica.tscn" id="2_cu32d"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="2_o47jk"]
 [ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="3_g2n7u"]
+[ext_resource type="AudioStream" uid="uid://dgqj8n6gcny54" path="res://Audio/SFX/DamageTakenSound.wav" id="5_6qw1n"]
+[ext_resource type="AudioStream" uid="uid://cdbow5pueaqo0" path="res://Audio/SFX/SoundDeath.wav" id="6_tjsri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
@@ -259,6 +261,10 @@ hitAnimator = NodePath("../AnimatedSprite2D/HitFlashAnimationPlayer")
 [node name="InvulnerableTimer" type="Timer" parent="HealthComponent" unique_id=1427544082]
 one_shot = true
 
+[node name="DamageSound" type="AudioStreamPlayer" parent="HealthComponent" unique_id=1214509628]
+stream = ExtResource("5_6qw1n")
+bus = &"SFX"
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1685226919]
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
@@ -271,6 +277,11 @@ collision_mask = 2
 position = Vector2(-2, -1)
 shape = SubResource("CapsuleShape2D_mqvok")
 debug_color = Color(0.674176, 0.40751508, 0.7823852, 0.41960785)
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="." unique_id=1482053891]
+process_mode = 3
+stream = ExtResource("6_tjsri")
+bus = &"SFX"
 
 [connection signal="timeout" from="HealthComponent/InvulnerableTimer" to="HealthComponent" method="_whenInvulTimeOut"]
 [connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]

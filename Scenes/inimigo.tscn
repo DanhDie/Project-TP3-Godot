@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://baghp50fcgjxo" path="res://Scripts/Inimigo.cs" id="1_1vr66"]
 [ext_resource type="Texture2D" uid="uid://blf73gdp5taci" path="res://Assets/Layout/fundo_barra_inimigo.png" id="2_ayero"]
+[ext_resource type="AudioStream" uid="uid://co47yatflo2bg" path="res://Audio/SFX/BatDamageSound.wav" id="3_gb7r5"]
 [ext_resource type="Texture2D" uid="uid://clc3mck2oy2hk" path="res://Assets/Layout/dentro_barra_inimigo.png" id="3_qpp8r"]
 [ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="4_fokg4"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="5_qpp8r"]
@@ -67,7 +68,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fokg4"]
 resource_name = "hitFlash"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,6 +97,11 @@ velocidade = 50.0
 [node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("hitAnimator") instance=ExtResource("5_qpp8r")]
 position = Vector2(0, -25)
 hitAnimator = NodePath("../AnimatedSprite2D/HitFlashAnimationPlayer")
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="HealthComponent" unique_id=519276851]
+stream = ExtResource("3_gb7r5")
+max_polyphony = 10
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761500617]
 light_mask = 2

@@ -12,6 +12,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
 
     private CollisionShape2D collisionShape;
     private HealthComponent healthPlayer;
+    private AudioStreamPlayer deathSound;
 
 
     private enum Estado
@@ -31,6 +32,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
         healthPlayer = GetNode<HealthComponent>("HealthComponent");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+        deathSound = GetNode<AudioStreamPlayer>("DeathSound");
     }
     public override void _Process(double delta)
     {
@@ -140,6 +142,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     public void destruirSe()
     {
         EmitSignal(SignalName.PlayerMorreu);
+        deathSound.Play();
         GetTree().Paused = true;
     }
 }
