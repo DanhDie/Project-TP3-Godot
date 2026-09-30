@@ -3,8 +3,10 @@ using System;
 
 public partial class TelaPause : Control
 {
+    private CenterContainer options;
     public override void _Ready()
     {
+        options = GetNode<CenterContainer>("Options");
         this.Hide();
     }
     public override void _Process(double delta)
@@ -48,5 +50,10 @@ public partial class TelaPause : Control
         TransicionScene transicao = GetNode<TransicionScene>("/root/TransicionScene");
         transicao.transicion("res://Scenes/tela_inicial.tscn");
         resume();
+    }
+
+    public void _OnOptionsPressed()
+    {
+        options.Show();
     }
 }

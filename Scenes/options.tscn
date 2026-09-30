@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dhn1ck0f8linh"]
+
+[ext_resource type="Script" uid="uid://c8mvhms14crf6" path="res://Scripts/Options.cs" id="1_kftxf"]
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="2_663nc"]
+[ext_resource type="Script" uid="uid://c3y4i6bvlwrhc" path="res://Scripts/MusicControl.cs" id="3_hvj8k"]
+[ext_resource type="Script" uid="uid://g51aelgxg8on" path="res://Scripts/SfxControl.cs" id="4_38txh"]
+[ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="5_5a0sy"]
+
+[node name="Options" type="CenterContainer" unique_id=1639971852]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_663nc")
+script = ExtResource("1_kftxf")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1862616016]
+custom_minimum_size = Vector2(195, 210)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1069774697]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1575745774]
+layout_mode = 2
+text = "Musica"
+
+[node name="MusicControl" type="HSlider" parent="PanelContainer/VBoxContainer" unique_id=937461993]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("2_663nc")
+max_value = 1.0
+step = 0.05
+value = 0.7
+script = ExtResource("3_hvj8k")
+
+[node name="Label2" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1709697009]
+layout_mode = 2
+text = "Efeitos"
+
+[node name="SFXControl" type="HSlider" parent="PanelContainer/VBoxContainer" unique_id=1150785084]
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.05
+value = 0.7
+script = ExtResource("4_38txh")
+
+[node name="Label3" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1920993419]
+layout_mode = 2
+
+[node name="Start3" parent="PanelContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("5_5a0sy")]
+layout_mode = 2
+text = "Retornar"
+
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/MusicControl" to="PanelContainer/VBoxContainer/MusicControl" method="alterarVolume"]
+[connection signal="value_changed" from="PanelContainer/VBoxContainer/SFXControl" to="PanelContainer/VBoxContainer/SFXControl" method="alterarVolume"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Start3" to="." method="_OnResumePressed"]

@@ -10,9 +10,13 @@ public partial class RajadaMistica : Area2D
     [Export] float dano = 2;
     private float distanciaPercorrida = 0;
     [Export] private float taxaCrescimento = 1.01f;
+
+    AudioStreamPlayer audio;
     public override void _Ready()
     {
         Scale = new Vector2(.5f, .5f);
+        audio = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        TocarSom();
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -56,4 +60,10 @@ public partial class RajadaMistica : Area2D
             );
         }
     }
+    public void TocarSom()
+    {
+        audio.PitchScale = (float)GD.RandRange(1.2, 1.5);
+        audio.Play();
+    }
+
 }

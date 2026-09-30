@@ -186,7 +186,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_fokg4"]
 resource_name = "hitFlash"
-length = 0.19999999999999998
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -251,6 +251,7 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_6qw1n")
 
 [node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("invulFrames", "hitAnimator") instance=ExtResource("2_o47jk")]
+position = Vector2(0, -16)
 invulFrames = NodePath("InvulnerableTimer")
 invulTime = 1.0
 hitAnimator = NodePath("../AnimatedSprite2D/HitFlashAnimationPlayer")

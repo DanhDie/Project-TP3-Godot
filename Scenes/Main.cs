@@ -9,5 +9,6 @@ public partial class Main : Node2D
         GetTree().Paused = false;
         gameManager = GetNode<GameManager>("/root/GameManager");
         gameManager.timer = 0;
+        gameManager.pontuacaoMortes = 0;
     }
 }

@@ -10,6 +10,7 @@
 [ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
 [ext_resource type="PackedScene" uid="uid://cw2uij5ytidnf" path="res://Scenes/tela_pause.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c6l8jcmk0nckl" path="res://Scenes/tela_morte.tscn" id="10_hptm8"]
+[ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
 script = ExtResource("1_6bp64")
@@ -55,3 +56,10 @@ visible = false
 
 [node name="TelaMorte" parent="CanvasLayer" unique_id=599324390 instance=ExtResource("10_hptm8")]
 visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=186521943]
+process_mode = 3
+stream = ExtResource("11_d1ilt")
+volume_db = -10.035
+autoplay = true
+bus = &"Music"
