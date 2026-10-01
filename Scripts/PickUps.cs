@@ -10,11 +10,13 @@ public partial class PickUps : Area2D
 
 	private float speed = 170;
 	private Vector2 direction;
+    private AudioStreamPlayer audio;
 
     public override void _Ready()
     {
         Sprite2D sprite = GetNode<Sprite2D>("Sprite2D");
 		sprite.Texture = icone;
+        audio = GetNode<AudioStreamPlayer>("PickUpSound");
     }
     public override void _PhysicsProcess(double delta)
     {
@@ -26,6 +28,7 @@ public partial class PickUps : Area2D
     }
     public virtual void _OnPickUp(Node2D body)
 	{
+        tocarSom();
         destruirSe();
 
     }
@@ -35,8 +38,15 @@ public partial class PickUps : Area2D
         player = target;
         canFollow = true;
     }
-    public void destruirSe()
+    public async void destruirSe()
     {
+        Visible = false;
+        await ToSignal(audio, AudioStreamPlayer.SignalName.Finished);
         QueueFree();
+    }
+    public async void tocarSom()
+    {
+        audio.PitchScale = (float)GD.RandRange(0.8, 1.6);
+        audio.Play();
     }
 }

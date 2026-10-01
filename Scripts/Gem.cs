@@ -8,6 +8,8 @@ public partial class Gem : PickUps
 	public override void _OnPickUp(Node2D body)
 	{
 		player.addXP(xp);
-		destruirSe();
+        tocarSom();
+
+        destruirSe();
 	}
 }

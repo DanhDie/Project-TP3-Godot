@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b0k0cfhou48hr" path="res://Scripts/PickUps.cs" id="1_d2npt"]
 [ext_resource type="Texture2D" uid="uid://bpms0i5juxy0u" path="res://Assets/grabber.png" id="2_ogtrr"]
+[ext_resource type="AudioStream" uid="uid://bcc2y1jywis5d" path="res://Audio/SFX/PickUpSound2.wav" id="3_gjgag"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bj4t2"]
 
@@ -15,5 +16,10 @@ icone = ExtResource("2_ogtrr")
 shape = SubResource("CircleShape2D_bj4t2")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1614820695]
+
+[node name="PickUpSound" type="AudioStreamPlayer" parent="." unique_id=1544759708]
+stream = ExtResource("3_gjgag")
+max_polyphony = 10
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_OnPickUp"]
