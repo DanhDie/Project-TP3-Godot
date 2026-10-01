@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 using static System.Net.Mime.MediaTypeNames;
 
 public partial class Inimigo : CharacterBody2D, IDestrutivel
@@ -10,8 +11,10 @@ public partial class Inimigo : CharacterBody2D, IDestrutivel
     [Export] public Personagem player;
 	[Export] private AnimatedSprite2D animatedSprite;
     [Export] private bool hasMultipleAnimations = false;
-    
-    
+
+    [Export] private PackedScene[] pickUpList;
+
+
     private float separation;
     private Area2D area2D;
 
@@ -83,7 +86,8 @@ public partial class Inimigo : CharacterBody2D, IDestrutivel
 
     public void destruirSe()
     {
-		gameManager.aumentarPontuacao(morteValue);
+        dropItem();
+        gameManager.aumentarPontuacao(morteValue);
         QueueFree();
     }
 
@@ -100,5 +104,16 @@ public partial class Inimigo : CharacterBody2D, IDestrutivel
     public float getSeparation()
     {
         return separation;
+    }
+
+    private void dropItem()
+    {
+        PackedScene item = pickUpList[(int)GD.RandRange(0, pickUpList.Length - 1)];
+
+        PickUps itemToDrop = item.Instantiate<PickUps>();
+
+        itemToDrop.Position = Position;
+
+        GetTree().CurrentScene.CallDeferred("add_child", itemToDrop);
     }
 }
