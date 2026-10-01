@@ -14,6 +14,9 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     private HealthComponent healthPlayer;
     private AudioStreamPlayer deathSound;
 
+    private Inimigo nearestEnemy;
+    private float nearestEnemyDistance = float.PositiveInfinity;
+
 
     private enum Estado
     {
@@ -36,6 +39,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     }
     public override void _Process(double delta)
     {
+        AtualizarNearestEnemy();
         if (Input.IsActionJustPressed("atirar"))
         {
             Atirar();
@@ -44,6 +48,14 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
 
     public override void _PhysicsProcess(double delta)
     {
+        if (nearestEnemy != null)
+        {
+            nearestEnemyDistance = nearestEnemy.getSeparation();
+        }
+        else
+        {
+            nearestEnemyDistance = float.PositiveInfinity;
+        }
         Vector2 direcao = Input.GetVector(
             "mover_esquerda",
             "mover_direita",
@@ -144,5 +156,41 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         EmitSignal(SignalName.PlayerMorreu);
         deathSound.Play();
         GetTree().Paused = true;
+    }
+
+    public float getNearestEnemyDistance()
+    {
+        return nearestEnemyDistance;
+    }
+    public void setNearestEnemy(Inimigo enemy)
+    {
+        nearestEnemy = enemy;
+        nearestEnemyDistance = enemy.getSeparation();
+    }
+    public Inimigo getNearestEnemy()
+    {
+        return nearestEnemy;
+    }
+    private void AtualizarNearestEnemy()
+    {
+        if (GodotObject.IsInstanceValid(nearestEnemy))
+            return;
+
+        nearestEnemy = null;
+        nearestEnemyDistance = float.PositiveInfinity;
+
+        foreach (Node node in GetTree().GetNodesInGroup("inimigos"))
+        {
+            if (node is Inimigo inimigo && GodotObject.IsInstanceValid(inimigo))
+            {
+                float distancia = GlobalPosition.DistanceTo(inimigo.GlobalPosition);
+
+                if (distancia < nearestEnemyDistance)
+                {
+                    nearestEnemy = inimigo;
+                    nearestEnemyDistance = distancia;
+                }
+            }
+        }
     }
 }

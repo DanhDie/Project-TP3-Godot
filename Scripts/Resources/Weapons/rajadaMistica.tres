@@ -1,0 +1,15 @@
+[gd_resource type="Resource" format=3 uid="uid://bh6xj088a4r4y"]
+
+[ext_resource type="PackedScene" uid="uid://l14nd2g8iufj" path="res://Scenes/projetil.tscn" id="1_v268r"]
+[ext_resource type="Texture2D" uid="uid://beih34f7go5to" path="res://Assets/grabber2.png" id="2_v74un"]
+[ext_resource type="Script" uid="uid://mka26d6hjf75" path="res://Scripts/Resources/SingleShot.cs" id="3_5qc02"]
+
+[resource]
+script = ExtResource("3_5qc02")
+Nome = "RajadaMistica"
+Sprite = ExtResource("2_v74un")
+Damage = 5.0
+Cooldown = 0.6
+Speed = 500.0
+Projetil = ExtResource("1_v268r")
+metadata/_custom_type_script = "uid://mka26d6hjf75"

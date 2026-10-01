@@ -88,7 +88,7 @@ _data = {
 &"hitFlash": SubResource("Animation_fokg4")
 }
 
-[node name="Inimigo" type="CharacterBody2D" unique_id=1976030229 node_paths=PackedStringArray("animatedSprite") groups=["EnemyBasic"]]
+[node name="Inimigo" type="CharacterBody2D" unique_id=1976030229 node_paths=PackedStringArray("animatedSprite") groups=["EnemyBasic", "inimigos"]]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_1vr66")

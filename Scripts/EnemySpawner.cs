@@ -81,7 +81,7 @@ public partial class EnemySpawner : Node2D
     public void _OnTimeOut()
     {
         seconds++;
-        amountSpawn(seconds % spawnFreq);
+        amountSpawn(seconds % spawnFreq+1);
     }
 
     public void _OnPatternTimeoutEnemyChange()
@@ -94,7 +94,7 @@ public partial class EnemySpawner : Node2D
         if (!canSpawn || enemies.Count == 0)
             return;
 
-        int amount = 20+spawnFreq*10;
+        int amount = 5+spawnFreq*10;
         float radius = 300f;
 
         indexEnemy = GD.RandRange(0, enemies.Count - 1);
