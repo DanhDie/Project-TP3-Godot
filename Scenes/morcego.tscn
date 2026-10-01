@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://ca6jobro2hqwm"]
+
+[ext_resource type="PackedScene" uid="uid://bsl2l0w0v636g" path="res://Scenes/inimigo.tscn" id="1_rmxlg"]
+[ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="2_6o24g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmxlg"]
+resource_local_to_scene = true
+shader = ExtResource("2_6o24g")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
+
+[node name="Morcego" unique_id=1976030229 instance=ExtResource("1_rmxlg")]
+
+[node name="LifeBar" parent="." index="3" unique_id=711813934]
+offset_left = -14.0
+offset_right = 14.0
+
+[node name="AnimatedSprite2D" parent="." index="4" unique_id=1962497488]
+material = SubResource("ShaderMaterial_rmxlg")

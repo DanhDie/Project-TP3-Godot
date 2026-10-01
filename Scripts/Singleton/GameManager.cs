@@ -4,6 +4,7 @@ using System;
 public partial class GameManager : Node
 {
 	public float timer = 0f;
+	public int pontuacaoMortes = 0;
 
 	public override void _Process(double delta)
 	{
@@ -13,6 +14,11 @@ public partial class GameManager : Node
 	private void aumentarTempo(double delta)
 	{
 		timer += (float)delta;
+	}
+
+	public void aumentarPontuacao(int number)
+	{
+		pontuacaoMortes += number;
 	}
 
 }

@@ -1,14 +1,18 @@
 using Godot;
 using System;
 
-public partial class Inimigo : CharacterBody2D
+public partial class Inimigo : CharacterBody2D, IDestrutivel
 {
 	[Export] private float velocidade = 200.0f;
-	[Export] private int dano = 2;
-	[Export] private Personagem player;
+	[Export] public int dano = 2;
+	[Export] public int morteValue = 1;
+    [Export] public Personagem player;
 	[Export] private AnimatedSprite2D animatedSprite;
+    [Export] private bool hasMultipleAnimations = false;
 
 	private Area2D area2D;
+
+	GameManager gameManager;
 
 	public override void _Ready()
 	{
@@ -16,23 +20,62 @@ public partial class Inimigo : CharacterBody2D
 		area2D = GetNode<Area2D>("Area2D");
 		area2D.BodyEntered += OnArea2DAreaEntered;
 		animatedSprite.Play("default");
-	}
-	public override void _PhysicsProcess(double delta)
-	{
-		//checar se player esta presente
-		if (player != null)
-		{
-			Vector2 direcao = (player.Position - Position).Normalized();
-			Velocity = direcao * velocidade;
-			MoveAndSlide();
-		}
-	}
+        gameManager = GetNode<GameManager>("/root/GameManager");
 
-	public void OnArea2DAreaEntered(Node2D body)
+    }
+    public override void _PhysicsProcess(double delta)
+    {
+        if (player != null)
+        {
+            Vector2 direcao = (player.Position - Position).Normalized();
+
+            Velocity = direcao * velocidade;
+            MoveAndSlide();
+
+            if (hasMultipleAnimations)
+            {
+                AtualizarAnimacao(direcao);
+            }
+        }
+    }
+
+    private void AtualizarAnimacao(Vector2 direcao)
+    {
+        if (Mathf.Abs(direcao.X) > Mathf.Abs(direcao.Y))
+        {
+            if (direcao.X > 0)
+            {
+                animatedSprite.FlipH = false;
+                animatedSprite.Play("walkLado");
+            }
+
+            else
+            {
+                animatedSprite.FlipH = true;
+                animatedSprite.Play("walkLado");
+
+            }
+        }
+        else
+        {
+            if (direcao.Y < 0)
+                animatedSprite.Play("walkCostas");
+            else
+                animatedSprite.Play("default");
+        }
+    }
+
+    public void OnArea2DAreaEntered(Node2D body)
 	{
 		if (body is Personagem player)
 		{
 			player.GetNode<HealthComponent>("HealthComponent").takeDamage(dano);
 		}
 	}
+
+    public void destruirSe()
+    {
+		gameManager.aumentarPontuacao(morteValue);
+        QueueFree();
+    }
 }

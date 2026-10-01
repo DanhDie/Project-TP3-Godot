@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cw2uij5ytidnf"]
+
+[ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="1_6gfi8"]
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="1_rwfxo"]
+[ext_resource type="Script" uid="uid://cyyoe8kiixx3q" path="res://Scripts/TelaPause.cs" id="2_esn0u"]
+[ext_resource type="PackedScene" uid="uid://dhn1ck0f8linh" path="res://Scenes/options.tscn" id="4_esn0u"]
+
+[node name="TelaPause" type="Control" unique_id=1659098915]
+process_mode = 3
+top_level = true
+z_index = 13
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rwfxo")
+script = ExtResource("2_esn0u")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=614669678]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.03529412, 0.003921569, 0.08235294, 0.7019608)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1303102839]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1306100432]
+layout_mode = 2
+
+[node name="Resume" parent="CenterContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("1_6gfi8")]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("1_rwfxo")
+text = "Retomar"
+
+[node name="Options" parent="CenterContainer/VBoxContainer" unique_id=1798473286 instance=ExtResource("1_6gfi8")]
+layout_mode = 2
+theme = ExtResource("1_rwfxo")
+text = "Opções"
+
+[node name="Reiniciar" parent="CenterContainer/VBoxContainer" unique_id=802360968 instance=ExtResource("1_6gfi8")]
+layout_mode = 2
+theme = ExtResource("1_rwfxo")
+text = "Reiniciar"
+
+[node name="Sair" parent="CenterContainer/VBoxContainer" unique_id=1260819091 instance=ExtResource("1_6gfi8")]
+layout_mode = 2
+theme = ExtResource("1_rwfxo")
+text = "Sair"
+
+[node name="Options" parent="." unique_id=1639971852 instance=ExtResource("4_esn0u")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.5
+offset_top = -105.5
+offset_right = 97.5
+offset_bottom = 105.5
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Resume" to="." method="_OnResumePressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_OnOptionsPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Reiniciar" to="." method="_OnRestartPressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Sair" to="." method="_OnExitPressed"]

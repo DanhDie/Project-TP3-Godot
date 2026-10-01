@@ -2,13 +2,21 @@
 
 [ext_resource type="Script" uid="uid://baghp50fcgjxo" path="res://Scripts/Inimigo.cs" id="1_1vr66"]
 [ext_resource type="Texture2D" uid="uid://blf73gdp5taci" path="res://Assets/Layout/fundo_barra_inimigo.png" id="2_ayero"]
+[ext_resource type="AudioStream" uid="uid://co47yatflo2bg" path="res://Audio/SFX/BatDamageSound.wav" id="3_gb7r5"]
 [ext_resource type="Texture2D" uid="uid://clc3mck2oy2hk" path="res://Assets/Layout/dentro_barra_inimigo.png" id="3_qpp8r"]
-[ext_resource type="Script" uid="uid://b4syreksiwfw4" path="res://Scripts/HealthPlayer.cs" id="4_fokg4"]
 [ext_resource type="PackedScene" uid="uid://ckvywk6y0qjwp" path="res://Scenes/Components/health_component.tscn" id="5_qpp8r"]
+[ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="6_fokg4"]
+[ext_resource type="Script" uid="uid://jaa12y51ms4h" path="res://Scripts/LifeBar.cs" id="6_gb7r5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o47jk"]
 radius = 11.085
 height = 45.52
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6epv4"]
+resource_local_to_scene = true
+shader = ExtResource("6_fokg4")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_nj8y5"]
 _data = PackedByteArray("AAADAAUAAAABAAAAgAAAAIAAAABmAQAAUklGRl4BAABXRUJQVlA4TFIBAAAvf8AfEDegppEU6OoPSoJD9KJOQQNCkAD034RQwT3F1DSSAt1HTUlwh3OszH8AMJnbRZZW+3/nA1qRJEmSLKfQFJyCUzAKRiH5c+hzZau+3iER/Z+A/FNS/Uy9GeEb8GLUz9TPZMVEE02kw0sRnjTRJ/CrYTx6jOxqZNXEo8dEO/xA1m3ogaNs6/BiUD1wVPnNKoDdBa0bVAALW/eBrNva8oAHbbd1eBnytJUHPOj2hF+owjmgek0tnAPtD1aTOICZxO561AFM/SJu5tm2Nc9u5kpWk9i2JrH7DPNd5GLM03RP8VfTXVHEvDQxL8V8aN6amLfmij794s//fTE/NLfyv2E10btS49Fj1BsS0ANHAZN4HyayrQLYbRjnXTjttpYHPGi31Vvp1k3hHNCtW2/HOIAZbyauq0lsW5PYdeY2YueL6V64mhuJ5qWJeam5lf/yBQ==")
@@ -43,13 +51,62 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="Inimigo" type="CharacterBody2D" unique_id=1976030229]
+[sub_resource type="Animation" id="Animation_of3jj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fokg4"]
+resource_name = "hitFlash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gb7r5"]
+_data = {
+&"RESET": SubResource("Animation_of3jj"),
+&"hitFlash": SubResource("Animation_fokg4")
+}
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1976030229 node_paths=PackedStringArray("animatedSprite") groups=["EnemyBasic"]]
 collision_layer = 2
-collision_mask = 6
+collision_mask = 2
 script = ExtResource("1_1vr66")
 velocidade = 50.0
+animatedSprite = NodePath("AnimatedSprite2D")
+
+[node name="HealthComponent" parent="." unique_id=1010483348 node_paths=PackedStringArray("hitAnimator") instance=ExtResource("5_qpp8r")]
+position = Vector2(0, -25)
+hitAnimator = NodePath("../AnimatedSprite2D/HitFlashAnimationPlayer")
+
+[node name="DamageSound" type="AudioStreamPlayer" parent="HealthComponent" unique_id=519276851]
+stream = ExtResource("3_gb7r5")
+max_polyphony = 10
+bus = &"SFX"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=761500617]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(-0.115, -2.325)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_o47jk")
@@ -63,9 +120,32 @@ position = Vector2(-0.24, -3.085)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_o47jk")
 
+[node name="LifeBar" type="TextureProgressBar" parent="." unique_id=711813934 node_paths=PackedStringArray("player")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -27.5
+offset_right = 18.0
+offset_bottom = -17.5
+grow_horizontal = 2
+grow_vertical = 2
+rounded = true
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("2_ayero")
+texture_progress = ExtResource("3_qpp8r")
+script = ExtResource("6_gb7r5")
+player = NodePath("..")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1962497488]
 texture_filter = 1
+material = SubResource("ShaderMaterial_6epv4")
 sprite_frames = SubResource("SpriteFrames_qpp8r")
+frame_progress = 0.8617445
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": false,
@@ -88,27 +168,8 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "b7a7768118580e4fe6f5ceac831bdb98"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=711813934 node_paths=PackedStringArray("player")]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -27.5
-offset_right = 18.0
-offset_bottom = -17.5
-grow_horizontal = 2
-grow_vertical = 2
-rounded = true
-nine_patch_stretch = true
-stretch_margin_left = 5
-stretch_margin_top = 5
-stretch_margin_right = 5
-stretch_margin_bottom = 5
-texture_under = ExtResource("2_ayero")
-texture_progress = ExtResource("3_qpp8r")
-script = ExtResource("4_fokg4")
-player = NodePath("..")
-
-[node name="HealthComponent" parent="." unique_id=1010483348 instance=ExtResource("5_qpp8r")]
+[node name="HitFlashAnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2D" unique_id=2024751499]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_gb7r5")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

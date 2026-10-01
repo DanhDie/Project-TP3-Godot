@@ -1,14 +1,19 @@
 using Godot;
 using System;
 
-public partial class Personagem : CharacterBody2D
+public partial class Personagem : CharacterBody2D, IDestrutivel
 {
+    [Signal] public delegate void PlayerMorreuEventHandler();
     [Export] public float velocidade = 400.0f;
     [Export] private AnimatedSprite2D animatedSprite;
     [Export] private PackedScene tiroAtual;
     [Export] private float tempoInvul = 1.0f;
+    
 
     private CollisionShape2D collisionShape;
+    private HealthComponent healthPlayer;
+    private AudioStreamPlayer deathSound;
+
 
     private enum Estado
     {
@@ -25,7 +30,9 @@ public partial class Personagem : CharacterBody2D
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        healthPlayer = GetNode<HealthComponent>("HealthComponent");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
+        deathSound = GetNode<AudioStreamPlayer>("DeathSound");
     }
     public override void _Process(double delta)
     {
@@ -122,5 +129,20 @@ public partial class Personagem : CharacterBody2D
 
         Vector2 direcao = GetGlobalMousePosition() - GlobalPosition;
         bala.Rotation = direcao.Angle();
+    }
+
+    private void OnSelfDamageBodyEntered(Node2D body)
+    {
+        if (body is Inimigo inimigo)
+        {
+            healthPlayer.takeDamage(inimigo.dano);
+        }
+    }
+
+    public void destruirSe()
+    {
+        EmitSignal(SignalName.PlayerMorreu);
+        deathSound.Play();
+        GetTree().Paused = true;
     }
 }

@@ -3,6 +3,8 @@
 [ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="1_6rs07"]
 [ext_resource type="Script" uid="uid://b7o0mc052qo82" path="res://Scripts/TelaInicial.cs" id="2_pekxb"]
 [ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="2_rrt2p"]
+[ext_resource type="AudioStream" uid="uid://cc37iuno2w63a" path="res://Audio/Music/Music_TelaInicial.wav" id="4_s7e5w"]
+[ext_resource type="PackedScene" uid="uid://dhn1ck0f8linh" path="res://Scenes/options.tscn" id="5_r8dwt"]
 
 [node name="TelaInicial" type="Control" unique_id=1558152645]
 layout_mode = 3
@@ -19,16 +21,21 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="PanelContainer" unique_id=966883501]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=966883501]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 639.0
+offset_bottom = 358.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1383590986]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/CenterContainer" unique_id=1383590986]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=152433213]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer" unique_id=152433213]
 layout_mode = 2
 theme_type_variation = &"RichTextLabelTittle"
 bbcode_enabled = true
@@ -37,7 +44,7 @@ text = "[shake rate=1 level=4]MORAX GAME
 fit_content = true
 autowrap_mode = 0
 
-[node name="Subtitulo" type="RichTextLabel" parent="PanelContainer/CenterContainer/VBoxContainer/RichTextLabel" unique_id=1924801247]
+[node name="Subtitulo" type="RichTextLabel" parent="CenterContainer/VBoxContainer/RichTextLabel" unique_id=1924801247]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -60,23 +67,43 @@ tab_size = 3
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("2_rrt2p")]
+[node name="Start" parent="CenterContainer/VBoxContainer" unique_id=769826495 instance=ExtResource("2_rrt2p")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Options" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=2066393955 instance=ExtResource("2_rrt2p")]
+[node name="Options" parent="CenterContainer/VBoxContainer" unique_id=2066393955 instance=ExtResource("2_rrt2p")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Opções"
 
-[node name="Exit" parent="PanelContainer/CenterContainer/VBoxContainer" unique_id=1709394409 instance=ExtResource("2_rrt2p")]
+[node name="Exit" parent="CenterContainer/VBoxContainer" unique_id=1709394409 instance=ExtResource("2_rrt2p")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Sair
 "
+
+[node name="MusicTittleScreen" type="AudioStreamPlayer" parent="." unique_id=1151703899]
+stream = ExtResource("4_s7e5w")
+autoplay = true
+bus = &"Music"
+
+[node name="Options" parent="." unique_id=1639971852 instance=ExtResource("5_r8dwt")]
+visible = false
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 222.0
+offset_top = 74.0
+offset_right = 417.0
+offset_bottom = 285.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_OnOptionsPressed"]
