@@ -8,7 +8,11 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     [Export] private AnimatedSprite2D animatedSprite;
     [Export] private PackedScene tiroAtual;
     [Export] private float tempoInvul = 1.0f;
-    
+
+    private float xp;
+    private float totalXP;
+    private float xpTolevelUp;
+    private int level = 1;
 
     private CollisionShape2D collisionShape;
     private HealthComponent healthPlayer;
@@ -36,12 +40,16 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         healthPlayer = GetNode<HealthComponent>("HealthComponent");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         deathSound = GetNode<AudioStreamPlayer>("DeathSound");
+        xp = 0;
+        level = 1;
+        xpTolevelUp = 5f;
     }
     public override void _Process(double delta)
     {
         AtualizarNearestEnemy();
         if (Input.IsActionJustPressed("atirar"))
         {
+            addXP(1f);
             Atirar();
         }
     }
@@ -69,6 +77,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         AtualizarAnimacao();
 
         MoveAndSlide();
+        checkXP();
     }
 
     private void AtualizarEstado(Vector2 direcao)
@@ -193,4 +202,42 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
             }
         }
     }
+
+    public void addXP(float XP)
+    {
+        xp += XP;
+        totalXP += XP;
+    }
+
+    public void checkXP()
+    {
+        if (xp >= xpTolevelUp)
+        {
+            xp -= xpTolevelUp;
+            level++;
+            xpTolevelUp++;
+            if (level > 3)
+            {
+                xpTolevelUp += 2;
+            }
+            if (level > 6)
+            {
+                xpTolevelUp += 10;
+            }
+        }
+    }
+
+    public float getXP()
+    {
+        return xp;
+    }
+    public float getXPtoNextLevel()
+    {
+        return xpTolevelUp;
+    }
+    public float getLevel()
+    {
+        return level;
+    }
+
 }

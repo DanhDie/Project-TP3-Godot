@@ -8,12 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://b3tckien8ej54" path="res://Scripts/Contador.cs" id="6_6bp64"]
 [ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://ccm3kqukgn31c" path="res://Assets/Layout/fora_barraXP.png" id="7_k12tt"]
+[ext_resource type="Texture2D" uid="uid://1pspggafultv" path="res://Assets/Layout/dentro_barraXP.png" id="8_h1bgf"]
+[ext_resource type="Script" uid="uid://0fbe4gwmahqn" path="res://Scenes/XpBar.cs" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://cw2uij5ytidnf" path="res://Scenes/tela_pause.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c6l8jcmk0nckl" path="res://Scenes/tela_morte.tscn" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://con2vn53ctcbu" path="res://Scripts/Waves.cs" id="11_6iyac"]
+[ext_resource type="Script" uid="uid://bcive6frirdii" path="res://Scripts/Level.cs" id="11_b3802"]
 [ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://05ey7odcgpb6" path="res://Scenes/slot.tscn" id="12_fdnlq"]
 [ext_resource type="Resource" uid="uid://bh6xj088a4r4y" path="res://Scripts/Resources/Weapons/rajadaMistica.tres" id="13_jkdf5"]
+[ext_resource type="PackedScene" uid="uid://cynj2tbscfnn4" path="res://Scenes/gem.tscn" id="19_fevyy"]
+[ext_resource type="PackedScene" uid="uid://da6270w5n21xl" path="res://Scenes/pick_ups.tscn" id="20_hibaj"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
 script = ExtResource("1_6bp64")
@@ -44,6 +50,41 @@ texture_under = ExtResource("3_kry3j")
 texture_progress = ExtResource("4_21xkr")
 script = ExtResource("3_8gbba")
 player = NodePath("../../Personagem")
+
+[node name="XPBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1510823592 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -183.0
+offset_top = 31.0
+offset_right = -8.160034
+offset_bottom = 41.0
+grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 10)
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("7_k12tt")
+texture_progress = ExtResource("8_h1bgf")
+script = ExtResource("9_h1bgf")
+player = NodePath("../../Personagem")
+
+[node name="Level" type="Label" parent="CanvasLayer/XPBar" unique_id=1192257724 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -31.0
+offset_top = -4.0
+offset_right = 9.0
+offset_bottom = 23.0
+theme = ExtResource("7_344ge")
+theme_override_font_sizes/font_size = 14
+text = "Nível 1"
+script = ExtResource("11_b3802")
+player = NodePath("../../../Personagem")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1637741728]
 anchors_preset = 5
@@ -81,7 +122,7 @@ visible = false
 [node name="TelaMorte" parent="CanvasLayer" unique_id=599324390 instance=ExtResource("10_hptm8")]
 visible = false
 
-[node name="Weapos" type="HBoxContainer" parent="CanvasLayer" unique_id=1222556609]
+[node name="Weapons" type="HBoxContainer" parent="CanvasLayer" unique_id=1222556609]
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -89,15 +130,15 @@ offset_top = -40.0
 offset_right = 40.0
 grow_vertical = 0
 
-[node name="Slot" parent="CanvasLayer/Weapos" unique_id=150281659 node_paths=PackedStringArray("player") instance=ExtResource("12_fdnlq")]
+[node name="Slot" parent="CanvasLayer/Weapons" unique_id=150281659 node_paths=PackedStringArray("player") instance=ExtResource("12_fdnlq")]
 layout_mode = 2
 player = NodePath("../../../Personagem")
 Weapon = ExtResource("13_jkdf5")
 
-[node name="Slot2" parent="CanvasLayer/Weapos" unique_id=1167602447 instance=ExtResource("12_fdnlq")]
+[node name="Slot2" parent="CanvasLayer/Weapons" unique_id=1167602447 instance=ExtResource("12_fdnlq")]
 layout_mode = 2
 
-[node name="Slot3" parent="CanvasLayer/Weapos" unique_id=1912446414 instance=ExtResource("12_fdnlq")]
+[node name="Slot3" parent="CanvasLayer/Weapons" unique_id=1912446414 instance=ExtResource("12_fdnlq")]
 layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=186521943]
@@ -106,3 +147,15 @@ stream = ExtResource("11_d1ilt")
 volume_db = -10.035
 autoplay = true
 bus = &"Music"
+
+[node name="Gem" parent="." unique_id=764282384 instance=ExtResource("19_fevyy")]
+position = Vector2(74, 215)
+
+[node name="Gem2" parent="." unique_id=1732725350 instance=ExtResource("19_fevyy")]
+position = Vector2(505, 270)
+
+[node name="Gem3" parent="." unique_id=1013963415 instance=ExtResource("19_fevyy")]
+position = Vector2(51, 160)
+
+[node name="PickUps" parent="." unique_id=186030473 instance=ExtResource("20_hibaj")]
+position = Vector2(134, 44)

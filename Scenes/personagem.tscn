@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="3_g2n7u"]
 [ext_resource type="AudioStream" uid="uid://dgqj8n6gcny54" path="res://Audio/SFX/DamageTakenSound.wav" id="5_6qw1n"]
 [ext_resource type="AudioStream" uid="uid://cdbow5pueaqo0" path="res://Audio/SFX/SoundDeath.wav" id="6_tjsri"]
+[ext_resource type="Script" uid="uid://eegv301yndvy" path="res://Scripts/Magnet.cs" id="7_tjsri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
@@ -211,7 +212,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqvok"]
 radius = 11.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj4t2"]
+radius = 119.0
+
 [node name="Personagem" type="CharacterBody2D" unique_id=1116870951 node_paths=PackedStringArray("animatedSprite")]
+collision_mask = 9
 script = ExtResource("1_vvf27")
 velocidade = 200.0
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -283,5 +288,14 @@ process_mode = 3
 stream = ExtResource("6_tjsri")
 bus = &"SFX"
 
+[node name="Magnet" type="Area2D" parent="." unique_id=559155003]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("7_tjsri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet" unique_id=58062317]
+shape = SubResource("CircleShape2D_bj4t2")
+
 [connection signal="timeout" from="HealthComponent/InvulnerableTimer" to="HealthComponent" method="_whenInvulTimeOut"]
 [connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]
+[connection signal="area_entered" from="Magnet" to="Magnet" method="_OnAreaEnter"]

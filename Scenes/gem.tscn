@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cynj2tbscfnn4"]
+
+[ext_resource type="PackedScene" uid="uid://da6270w5n21xl" path="res://Scenes/pick_ups.tscn" id="1_0xstn"]
+[ext_resource type="Script" uid="uid://b14btk6tvfybp" path="res://Scripts/Gem.cs" id="2_i7jy3"]
+[ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="3_i7jy3"]
+
+[node name="Gem" unique_id=764282384 instance=ExtResource("1_0xstn")]
+script = ExtResource("2_i7jy3")
+xp = 1.0
+titulo = "xpPequeno"
+icone = ExtResource("3_i7jy3")
