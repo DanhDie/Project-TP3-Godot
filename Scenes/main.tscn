@@ -16,8 +16,6 @@
 [ext_resource type="Script" uid="uid://con2vn53ctcbu" path="res://Scripts/Waves.cs" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://bcive6frirdii" path="res://Scripts/Level.cs" id="11_b3802"]
 [ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://05ey7odcgpb6" path="res://Scenes/slot.tscn" id="12_fdnlq"]
-[ext_resource type="Resource" uid="uid://bh6xj088a4r4y" path="res://Scripts/Resources/Weapons/rajadaMistica.tres" id="13_jkdf5"]
 [ext_resource type="PackedScene" uid="uid://cynj2tbscfnn4" path="res://Scenes/gem.tscn" id="19_fevyy"]
 [ext_resource type="PackedScene" uid="uid://da6270w5n21xl" path="res://Scenes/pick_ups.tscn" id="20_hibaj"]
 
@@ -121,25 +119,6 @@ visible = false
 
 [node name="TelaMorte" parent="CanvasLayer" unique_id=599324390 instance=ExtResource("10_hptm8")]
 visible = false
-
-[node name="Weapons" type="HBoxContainer" parent="CanvasLayer" unique_id=1222556609]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 40.0
-grow_vertical = 0
-
-[node name="Slot" parent="CanvasLayer/Weapons" unique_id=150281659 node_paths=PackedStringArray("player") instance=ExtResource("12_fdnlq")]
-layout_mode = 2
-player = NodePath("../../../Personagem")
-Weapon = ExtResource("13_jkdf5")
-
-[node name="Slot2" parent="CanvasLayer/Weapons" unique_id=1167602447 instance=ExtResource("12_fdnlq")]
-layout_mode = 2
-
-[node name="Slot3" parent="CanvasLayer/Weapons" unique_id=1912446414 instance=ExtResource("12_fdnlq")]
-layout_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=186521943]
 process_mode = 3

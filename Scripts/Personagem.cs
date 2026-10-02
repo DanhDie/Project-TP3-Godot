@@ -47,7 +47,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     public override void _Process(double delta)
     {
         AtualizarNearestEnemy();
-        if (Input.IsActionJustPressed("atirar"))
+        if (Input.IsActionJustPressed("click"))
         {
             addXP(1f);
             Atirar();
@@ -216,6 +216,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
             xp -= xpTolevelUp;
             level++;
             xpTolevelUp++;
+            GetNode<Choices>("%Choices").showChoices();
             if (level > 3)
             {
                 xpTolevelUp += 2;

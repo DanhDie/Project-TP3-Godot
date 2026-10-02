@@ -8,6 +8,7 @@ public partial class Weapon : Resource
     [Export] public float Cooldown { get; set; }
     [Export] public float Speed { get; set; }
     [Export] public PackedScene Projetil { get; set; }
+    [Export] public int level { get; set; }
     public virtual void Activate(Node2D source, Node2D target, SceneTree sceneTree)
     {
     }
