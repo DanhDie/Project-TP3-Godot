@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://l14nd2g8iufj"]
 
-[ext_resource type="Script" uid="uid://bjn6mavyf78gq" path="res://Projetil.cs" id="1_e1qxg"]
+[ext_resource type="Script" uid="uid://bjn6mavyf78gq" path="res://Scripts/Projetil.cs" id="1_e1qxg"]
 [ext_resource type="Texture2D" uid="uid://3ht6ohqx6j8k" path="res://Assets/Morax/rajadaMistica.png" id="2_tj6io"]
 [ext_resource type="AudioStream" uid="uid://dnnbrtlvck1u4" path="res://Audio/SFX/RajadaMisticaSound.wav" id="3_u11v5"]
 

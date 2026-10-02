@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dw0jlafro21ne"]
 
 [ext_resource type="PackedScene" uid="uid://bhoc5xsojqmwx" path="res://Scenes/zombie.tscn" id="1_tqwci"]
-[ext_resource type="Shader" uid="uid://cbo234m86b7f" path="res://ColorChange.tres" id="2_jl10b"]
-[ext_resource type="Shader" uid="uid://cmyw80ahkt7g" path="res://flashAndColor.tres" id="3_o1t1i"]
+[ext_resource type="Shader" uid="uid://cbo234m86b7f" path="res://Theme/ColorChange.tres" id="2_jl10b"]
+[ext_resource type="Shader" uid="uid://cmyw80ahkt7g" path="res://Theme/flashAndColor.tres" id="3_o1t1i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdqhx"]
 shader = ExtResource("2_jl10b")

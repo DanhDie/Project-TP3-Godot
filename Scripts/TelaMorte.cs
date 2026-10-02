@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 public partial class TelaMorte : Control
 {
@@ -16,6 +17,11 @@ public partial class TelaMorte : Control
     private void MostrarTelaMorte()
     {
         int scoreValue = Mathf.FloorToInt(gameManager.timer)+ gameManager.pontuacaoMortes;
+        if(gameManager.currentData.bestScore < scoreValue)
+        {
+            gameManager.currentData.bestScore = scoreValue;
+            SaveManager.saveGame(gameManager.currentData);
+        }
         if (scoreValue >= 100)
         {
             score.Text = "[wave]" + scoreValue;

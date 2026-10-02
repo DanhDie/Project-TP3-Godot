@@ -164,6 +164,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
 
     public void destruirSe()
     {
+       
         EmitSignal(SignalName.PlayerMorreu);
         deathSound.Play();
         GetTree().Paused = true;
