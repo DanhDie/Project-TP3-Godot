@@ -6,6 +6,11 @@
 [ext_resource type="Shader" uid="uid://bimkbur8l5hca" path="res://Assets/Shaders/flash.tres" id="3_g2n7u"]
 [ext_resource type="AudioStream" uid="uid://dgqj8n6gcny54" path="res://Audio/SFX/DamageTakenSound.wav" id="5_6qw1n"]
 [ext_resource type="AudioStream" uid="uid://cdbow5pueaqo0" path="res://Audio/SFX/SoundDeath.wav" id="6_tjsri"]
+[ext_resource type="Script" uid="uid://eegv301yndvy" path="res://Scripts/Magnet.cs" id="7_tjsri"]
+[ext_resource type="PackedScene" uid="uid://05ey7odcgpb6" path="res://Scenes/slot.tscn" id="8_6xg6t"]
+[ext_resource type="Resource" uid="uid://bh6xj088a4r4y" path="res://Scripts/Resources/Weapons/rajadaMistica.tres" id="9_yrj14"]
+[ext_resource type="Script" uid="uid://vj5fvhnl84pb" path="res://Scripts/Choices.cs" id="10_56vfe"]
+[ext_resource type="AudioStream" uid="uid://cw4fxg1p5121p" path="res://Audio/SFX/LevelUpSound.wav" id="11_yrj14"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
@@ -211,7 +216,11 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mqvok"]
 radius = 11.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj4t2"]
+radius = 119.0
+
 [node name="Personagem" type="CharacterBody2D" unique_id=1116870951 node_paths=PackedStringArray("animatedSprite")]
+collision_mask = 9
 script = ExtResource("1_vvf27")
 velocidade = 200.0
 animatedSprite = NodePath("AnimatedSprite2D")
@@ -283,5 +292,60 @@ process_mode = 3
 stream = ExtResource("6_tjsri")
 bus = &"SFX"
 
+[node name="Magnet" type="Area2D" parent="." unique_id=559155003]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("7_tjsri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Magnet" unique_id=58062317]
+shape = SubResource("CircleShape2D_bj4t2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=994452283]
+
+[node name="Weapons" type="HBoxContainer" parent="CanvasLayer" unique_id=111999974]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 128.0
+grow_vertical = 0
+
+[node name="Slot" parent="CanvasLayer/Weapons" unique_id=150281659 node_paths=PackedStringArray("player") instance=ExtResource("8_6xg6t")]
+layout_mode = 2
+player = NodePath("../../..")
+Weapon = ExtResource("9_yrj14")
+
+[node name="Slot2" parent="CanvasLayer/Weapons" unique_id=519693779 instance=ExtResource("8_6xg6t")]
+layout_mode = 2
+
+[node name="Slot3" parent="CanvasLayer/Weapons" unique_id=1453879835 instance=ExtResource("8_6xg6t")]
+layout_mode = 2
+
+[node name="Choices" type="VBoxContainer" parent="CanvasLayer" unique_id=285577960 node_paths=PackedStringArray("weapons")]
+unique_name_in_owner = true
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("10_56vfe")
+weapons = NodePath("../Weapons")
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="." unique_id=219878546]
+stream = ExtResource("11_yrj14")
+volume_db = 4.561
+pitch_scale = 1.18
+bus = &"SFX"
+
 [connection signal="timeout" from="HealthComponent/InvulnerableTimer" to="HealthComponent" method="_whenInvulTimeOut"]
 [connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]
+[connection signal="area_entered" from="Magnet" to="Magnet" method="_OnAreaEnter"]

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cbsqprkofd7so" path="res://Scenes/button.tscn" id="2_rrt2p"]
 [ext_resource type="AudioStream" uid="uid://cc37iuno2w63a" path="res://Audio/Music/Music_TelaInicial.wav" id="4_s7e5w"]
 [ext_resource type="PackedScene" uid="uid://dhn1ck0f8linh" path="res://Scenes/options.tscn" id="5_r8dwt"]
+[ext_resource type="Script" uid="uid://bhbbbs7dxgko5" path="res://Scripts/BestScore.cs" id="6_tvkgi"]
 
 [node name="TelaInicial" type="Control" unique_id=1558152645]
 layout_mode = 3
@@ -105,5 +106,36 @@ offset_right = 417.0
 offset_bottom = 285.0
 grow_horizontal = 1
 grow_vertical = 1
+
+[node name="BestScore" type="VBoxContainer" parent="." unique_id=1029140206]
+layout_mode = 0
+offset_left = 515.0
+offset_top = 3.0
+offset_right = 636.0
+offset_bottom = 101.0
+rotation = 0.11924945
+theme_override_constants/separation = -23
+script = ExtResource("6_tvkgi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="BestScore" unique_id=1227656797]
+layout_mode = 2
+theme = ExtResource("1_6rs07")
+theme_type_variation = &"RichTextLabelSubTittle"
+bbcode_enabled = true
+text = "[wave]Melhor Score"
+fit_content = true
+autowrap_mode = 0
+horizontal_alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Pontuacao" type="RichTextLabel" parent="BestScore" unique_id=609254918]
+layout_mode = 2
+theme = ExtResource("1_6rs07")
+theme_type_variation = &"RichTextLabelTittle"
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[wave]1000"
+fit_content = true
+horizontal_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Options" to="." method="_OnOptionsPressed"]

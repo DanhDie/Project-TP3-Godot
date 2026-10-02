@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://bt7c60jabt1x8"]
+
+[ext_resource type="Script" uid="uid://iir0r2yruwiq" path="res://Scripts/Resources/UpgradeProjetil.cs" id="1_be6mc"]
+
+[resource]
+script = ExtResource("1_be6mc")
+speed = 200.0
+description = "+200 de VELOCIDADE de ataque"

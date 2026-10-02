@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://c72v7cugd3v2p"]
+
+[ext_resource type="Script" uid="uid://cyqyp6aa6jryh" path="res://Scripts/Resources/Upgrade.cs" id="1_b3p3q"]
+
+[resource]
+script = ExtResource("1_b3p3q")
+damage = 2.0
+description = "+2 de DANO"

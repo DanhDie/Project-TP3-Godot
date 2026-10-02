@@ -6,7 +6,14 @@ public partial class GameManager : Node
 	public float timer = 0f;
 	public int pontuacaoMortes = 0;
 
-	public override void _Process(double delta)
+	public UserSaveData currentData;
+    public override void _Ready()
+	{
+		currentData = SaveManager.loadGame();
+	}
+
+
+    public override void _Process(double delta)
 	{
 		aumentarTempo(delta);
 	}

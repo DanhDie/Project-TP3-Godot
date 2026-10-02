@@ -13,7 +13,7 @@ elites = Array[PackedScene]([ExtResource("4_tdwud")])
 bosses = Array[PackedScene]([ExtResource("4_tdwud")])
 
 [node name="Pattern" type="Timer" parent="." unique_id=1473160951]
-wait_time = 10.0
+wait_time = 20.0
 autostart = true
 
 [node name="Elite" type="Timer" parent="." unique_id=1737149320]
@@ -26,9 +26,9 @@ wait_time = 60.0
 [node name="Timer" type="Timer" parent="." unique_id=627117829]
 autostart = true
 
-[connection signal="timeout" from="Pattern" to="." method="_OnPatternTimeoutCircle"]
 [connection signal="timeout" from="Pattern" to="." method="_OnPatternTimeout"]
-[connection signal="timeout" from="Elite" to="." method="_OnEliteTimeOutUpFrequency"]
+[connection signal="timeout" from="Pattern" to="." method="_OnPatternTimeoutCircle"]
 [connection signal="timeout" from="Elite" to="." method="_OnEliteTimeOutSpawn"]
+[connection signal="timeout" from="Elite" to="." method="_OnEliteTimeOutUpFrequency"]
 [connection signal="timeout" from="Boss" to="." method="_OnBossTimeOutSpawn"]
 [connection signal="timeout" from="Timer" to="." method="_OnTimeOut"]

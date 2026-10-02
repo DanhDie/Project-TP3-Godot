@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://l14nd2g8iufj"]
+
+[ext_resource type="Script" uid="uid://bjn6mavyf78gq" path="res://Scripts/Projetil.cs" id="1_e1qxg"]
+[ext_resource type="Texture2D" uid="uid://3ht6ohqx6j8k" path="res://Assets/Morax/rajadaMistica.png" id="2_tj6io"]
+[ext_resource type="AudioStream" uid="uid://dnnbrtlvck1u4" path="res://Audio/SFX/RajadaMisticaSound.wav" id="3_u11v5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bj4t2"]
+radius = 10.049875
+
+[node name="Projetil" type="Area2D" unique_id=1529545591]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_e1qxg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1624684013]
+position = Vector2(-13, 0)
+texture = ExtResource("2_tj6io")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=978341974]
+shape = SubResource("CircleShape2D_bj4t2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=754537157]
+stream = ExtResource("3_u11v5")
+pitch_scale = 1.6
+max_polyphony = 10
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

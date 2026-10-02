@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://05ey7odcgpb6"]
+
+[ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="1_12ej0"]
+[ext_resource type="Script" uid="uid://cydx3gd6yoqui" path="res://Scripts/Slot.cs" id="2_67ou1"]
+
+[node name="Slot" type="PanelContainer" unique_id=150281659]
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_12ej0")
+script = ExtResource("2_67ou1")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1115910591]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Cooldown" type="Timer" parent="." unique_id=30938342]
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_onCoolDownTimeOut"]

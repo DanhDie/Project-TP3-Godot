@@ -40,8 +40,9 @@ public partial class TelaPause : Control
 
     public void _OnRestartPressed()
     {
-        GetTree().ReloadCurrentScene();
         resume();
+        GetTree().ReloadCurrentScene();
+        
     }
 
 

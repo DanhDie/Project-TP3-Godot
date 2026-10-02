@@ -8,11 +8,20 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     [Export] private AnimatedSprite2D animatedSprite;
     [Export] private PackedScene tiroAtual;
     [Export] private float tempoInvul = 1.0f;
-    
+
+    private float xp;
+    private float totalXP;
+    private float xpTolevelUp;
+    private int level = 1;
 
     private CollisionShape2D collisionShape;
     private HealthComponent healthPlayer;
     private AudioStreamPlayer deathSound;
+    private AudioStreamPlayer levelUpSound;
+
+    private Inimigo nearestEnemy;
+    private float nearestEnemyDistance = float.PositiveInfinity;
+    private HBoxContainer weapons;
 
 
     private enum Estado
@@ -30,20 +39,33 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        weapons = GetNode<HBoxContainer>("CanvasLayer/Weapons");
         healthPlayer = GetNode<HealthComponent>("HealthComponent");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         deathSound = GetNode<AudioStreamPlayer>("DeathSound");
+        levelUpSound = GetNode<AudioStreamPlayer>("LevelUpSound");
+        xp = 0;
+        level = 1;
+        xpTolevelUp = 5f;
     }
     public override void _Process(double delta)
     {
-        if (Input.IsActionJustPressed("atirar"))
+        AtualizarNearestEnemy();
+        if (Input.IsActionJustPressed("click"))
         {
-            Atirar();
         }
     }
 
     public override void _PhysicsProcess(double delta)
     {
+        if (nearestEnemy != null)
+        {
+            nearestEnemyDistance = nearestEnemy.getSeparation();
+        }
+        else
+        {
+            nearestEnemyDistance = float.PositiveInfinity;
+        }
         Vector2 direcao = Input.GetVector(
             "mover_esquerda",
             "mover_direita",
@@ -57,6 +79,7 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         AtualizarAnimacao();
 
         MoveAndSlide();
+        checkXP();
     }
 
     private void AtualizarEstado(Vector2 direcao)
@@ -141,8 +164,82 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
 
     public void destruirSe()
     {
+       
         EmitSignal(SignalName.PlayerMorreu);
         deathSound.Play();
         GetTree().Paused = true;
     }
+
+    public float getNearestEnemyDistance()
+    {
+        return nearestEnemyDistance;
+    }
+    public void setNearestEnemy(Inimigo enemy)
+    {
+        nearestEnemy = enemy;
+        nearestEnemyDistance = enemy.getSeparation();
+    }
+    public Inimigo getNearestEnemy()
+    {
+        return nearestEnemy;
+    }
+    private void AtualizarNearestEnemy()
+    {
+        nearestEnemy = null;
+        nearestEnemyDistance = float.PositiveInfinity;
+
+        foreach (Node node in GetTree().GetNodesInGroup("inimigos"))
+        {
+            if (node is Inimigo inimigo && GodotObject.IsInstanceValid(inimigo))
+            {
+                float distancia = GlobalPosition.DistanceTo(inimigo.GlobalPosition);
+
+                if (distancia < nearestEnemyDistance)
+                {
+                    nearestEnemy = inimigo;
+                    nearestEnemyDistance = distancia;
+                }
+            }
+        }
+    }
+
+    public void addXP(float XP)
+    {
+        xp += XP;
+        totalXP += XP;
+    }
+
+    public void checkXP()
+    {
+        if (xp >= xpTolevelUp)
+        {
+            xp -= xpTolevelUp;
+            level++;
+            xpTolevelUp++;
+            levelUpSound.Play();
+            weapons.GetNode<Slot>("Slot").upgradeWeapon();
+            if (level > 3)
+            {
+                xpTolevelUp += 2;
+            }
+            if (level > 6)
+            {
+                xpTolevelUp += 10;
+            }
+        }
+    }
+
+    public float getXP()
+    {
+        return xp;
+    }
+    public float getXPtoNextLevel()
+    {
+        return xpTolevelUp;
+    }
+    public float getLevel()
+    {
+        return level;
+    }
+
 }

@@ -8,9 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://bajhilxmmw4ad" path="res://Assets/Layout/dentro_barra.png" id="4_21xkr"]
 [ext_resource type="Script" uid="uid://b3tckien8ej54" path="res://Scripts/Contador.cs" id="6_6bp64"]
 [ext_resource type="Theme" uid="uid://bq11ynibywv1j" path="res://Theme/theme_morax.tres" id="7_344ge"]
+[ext_resource type="Texture2D" uid="uid://ccm3kqukgn31c" path="res://Assets/Layout/fora_barraXP.png" id="7_k12tt"]
+[ext_resource type="Texture2D" uid="uid://1pspggafultv" path="res://Assets/Layout/dentro_barraXP.png" id="8_h1bgf"]
+[ext_resource type="Script" uid="uid://0fbe4gwmahqn" path="res://Scenes/XpBar.cs" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://cw2uij5ytidnf" path="res://Scenes/tela_pause.tscn" id="9_ynf5e"]
 [ext_resource type="PackedScene" uid="uid://c6l8jcmk0nckl" path="res://Scenes/tela_morte.tscn" id="10_hptm8"]
 [ext_resource type="Script" uid="uid://con2vn53ctcbu" path="res://Scripts/Waves.cs" id="11_6iyac"]
+[ext_resource type="Script" uid="uid://bcive6frirdii" path="res://Scripts/Level.cs" id="11_b3802"]
 [ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
@@ -42,6 +46,41 @@ texture_under = ExtResource("3_kry3j")
 texture_progress = ExtResource("4_21xkr")
 script = ExtResource("3_8gbba")
 player = NodePath("../../Personagem")
+
+[node name="XPBar" type="TextureProgressBar" parent="CanvasLayer" unique_id=1510823592 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -183.0
+offset_top = 31.0
+offset_right = -8.160034
+offset_bottom = 41.0
+grow_horizontal = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, 10)
+nine_patch_stretch = true
+stretch_margin_left = 5
+stretch_margin_top = 5
+stretch_margin_right = 5
+stretch_margin_bottom = 5
+texture_under = ExtResource("7_k12tt")
+texture_progress = ExtResource("8_h1bgf")
+script = ExtResource("9_h1bgf")
+player = NodePath("../../Personagem")
+
+[node name="Level" type="Label" parent="CanvasLayer/XPBar" unique_id=1192257724 node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -31.0
+offset_top = -4.0
+offset_right = 9.0
+offset_bottom = 23.0
+theme = ExtResource("7_344ge")
+theme_override_font_sizes/font_size = 14
+text = "Nível 1"
+script = ExtResource("11_b3802")
+player = NodePath("../../../Personagem")
 
 [node name="Label" type="Label" parent="CanvasLayer" unique_id=1637741728]
 anchors_preset = 5
