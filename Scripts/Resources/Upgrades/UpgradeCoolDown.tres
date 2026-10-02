@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://cumabqq0f818e"]
+
+[ext_resource type="Script" uid="uid://cyqyp6aa6jryh" path="res://Scripts/Resources/Upgrade.cs" id="1_ee3t1"]
+
+[resource]
+script = ExtResource("1_ee3t1")
+coolDown = -0.1
+description = "-0.1 de COOLDOWN"

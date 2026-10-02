@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://l14nd2g8iufj" path="res://Scenes/projetil.tscn" id="1_v268r"]
 [ext_resource type="Texture2D" uid="uid://beih34f7go5to" path="res://Assets/grabber2.png" id="2_v74un"]
 [ext_resource type="Script" uid="uid://mka26d6hjf75" path="res://Scripts/Resources/SingleShot.cs" id="3_5qc02"]
+[ext_resource type="Resource" uid="uid://cumabqq0f818e" path="res://Scripts/Resources/Upgrades/UpgradeCoolDown.tres" id="4_x1wqp"]
+[ext_resource type="Resource" uid="uid://c72v7cugd3v2p" path="res://Scripts/Resources/Upgrades/UpgradeDano.tres" id="5_avbtp"]
+[ext_resource type="Resource" uid="uid://bsiamvaeio8kc" path="res://Scripts/Resources/Upgrades/UpgradeGenerico.tres" id="6_5s2ib"]
+[ext_resource type="Resource" uid="uid://bt7c60jabt1x8" path="res://Scripts/Resources/Upgrades/UpgradeVelocidade.tres" id="7_hmosa"]
 
 [resource]
 script = ExtResource("3_5qc02")
@@ -12,4 +16,5 @@ Damage = 5.0
 Cooldown = 0.6
 Speed = 500.0
 Projetil = ExtResource("1_v268r")
+upgrades = Array[Resource]([ExtResource("4_x1wqp"), ExtResource("5_avbtp"), ExtResource("6_5s2ib"), ExtResource("7_hmosa"), ExtResource("6_5s2ib")])
 metadata/_custom_type_script = "uid://mka26d6hjf75"

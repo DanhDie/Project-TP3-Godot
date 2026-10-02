@@ -16,8 +16,6 @@
 [ext_resource type="Script" uid="uid://con2vn53ctcbu" path="res://Scripts/Waves.cs" id="11_6iyac"]
 [ext_resource type="Script" uid="uid://bcive6frirdii" path="res://Scripts/Level.cs" id="11_b3802"]
 [ext_resource type="AudioStream" uid="uid://yrlin1t310wl" path="res://Audio/Music/MusicJogo.wav" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://cynj2tbscfnn4" path="res://Scenes/gem.tscn" id="19_fevyy"]
-[ext_resource type="PackedScene" uid="uid://da6270w5n21xl" path="res://Scenes/pick_ups.tscn" id="20_hibaj"]
 
 [node name="Main" type="Node2D" unique_id=1557181432]
 script = ExtResource("1_6bp64")
@@ -126,15 +124,3 @@ stream = ExtResource("11_d1ilt")
 volume_db = -10.035
 autoplay = true
 bus = &"Music"
-
-[node name="Gem" parent="." unique_id=764282384 instance=ExtResource("19_fevyy")]
-position = Vector2(74, 215)
-
-[node name="Gem2" parent="." unique_id=1732725350 instance=ExtResource("19_fevyy")]
-position = Vector2(505, 270)
-
-[node name="Gem3" parent="." unique_id=1013963415 instance=ExtResource("19_fevyy")]
-position = Vector2(51, 160)
-
-[node name="PickUps" parent="." unique_id=186030473 instance=ExtResource("20_hibaj")]
-position = Vector2(134, 44)

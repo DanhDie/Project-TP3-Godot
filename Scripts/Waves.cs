@@ -11,7 +11,7 @@ public partial class Waves : Label
     }
     public override void _Process(double delta)
     {
-        int wave = (int)(gameManager.timer / 60) + 1;
+        int wave = (int)(gameManager.timer / 20) + 1;
 
         Text = "Onda " + wave;
     }

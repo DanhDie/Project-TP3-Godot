@@ -20,11 +20,27 @@ public partial class SingleShot : Weapon
 
         Vector2 direcao = (target.Position - source.Position).Normalized();
 
-        projectile.Damage = Damage;
-        projectile.Speed = Speed;
+        projectile.Damage = Damage + level;
+        projectile.Speed = Speed + level*50;
         projectile.Direction = direcao;
         projectile.Rotation = direcao.Angle();
 
         sceneTree.CurrentScene.AddChild(projectile);
+    }
+
+    public override void upgradeItem()
+    {
+        if (!IsUpgradable())
+        {
+            return;
+        }
+
+        var upgrade = upgrades[level - 1] as UpgradeProjetil;
+
+        Damage += upgrade.damage;
+        Cooldown += upgrade.coolDown;
+        Speed += upgrade.speed;
+
+        level++;
     }
 }

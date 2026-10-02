@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://bsiamvaeio8kc"]
+
+[ext_resource type="Script" uid="uid://cyqyp6aa6jryh" path="res://Scripts/Resources/Upgrade.cs" id="1_oj0kl"]
+
+[resource]
+script = ExtResource("1_oj0kl")
+damage = 1.0
+coolDown = -0.1
+description = "+1 de DANO e -0.1 de COOLDOWN"

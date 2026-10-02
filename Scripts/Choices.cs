@@ -4,15 +4,10 @@ using System;
 public partial class Choices : VBoxContainer
 {
 	[Export] HBoxContainer weapons;
-    private PackedScene OptionSlot = GD.Load<PackedScene>("res://Scenes/choice_slot.tscn");
+    private PackedScene ChoiceSlot = GD.Load<PackedScene>("res://Scenes/choice_slot.tscn");
     public override void _Ready()
 	{
 		this.Hide();
-	}
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
 	}
 
 	public void closeChoices()
@@ -22,8 +17,8 @@ public partial class Choices : VBoxContainer
 	}
     public void showChoices()
     {
-        var optionSlot = OptionSlot.Instantiate();
-        AddChild(optionSlot);
+        var choiceSlot = ChoiceSlot.Instantiate();
+        AddChild(choiceSlot);
         Show();
         GetTree().Paused = true;
     }

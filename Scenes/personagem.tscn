@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://05ey7odcgpb6" path="res://Scenes/slot.tscn" id="8_6xg6t"]
 [ext_resource type="Resource" uid="uid://bh6xj088a4r4y" path="res://Scripts/Resources/Weapons/rajadaMistica.tres" id="9_yrj14"]
 [ext_resource type="Script" uid="uid://vj5fvhnl84pb" path="res://Scripts/Choices.cs" id="10_56vfe"]
+[ext_resource type="AudioStream" uid="uid://cw4fxg1p5121p" path="res://Audio/SFX/LevelUpSound.wav" id="11_yrj14"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qpp8r"]
 radius = 9.905
@@ -338,6 +339,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("10_56vfe")
 weapons = NodePath("../Weapons")
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="." unique_id=219878546]
+stream = ExtResource("11_yrj14")
+volume_db = 4.561
+pitch_scale = 1.18
+bus = &"SFX"
 
 [connection signal="timeout" from="HealthComponent/InvulnerableTimer" to="HealthComponent" method="_whenInvulTimeOut"]
 [connection signal="body_entered" from="DamageArea" to="." method="OnSelfDamageBodyEntered"]

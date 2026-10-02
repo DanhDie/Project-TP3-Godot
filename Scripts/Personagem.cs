@@ -17,9 +17,11 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     private CollisionShape2D collisionShape;
     private HealthComponent healthPlayer;
     private AudioStreamPlayer deathSound;
+    private AudioStreamPlayer levelUpSound;
 
     private Inimigo nearestEnemy;
     private float nearestEnemyDistance = float.PositiveInfinity;
+    private HBoxContainer weapons;
 
 
     private enum Estado
@@ -37,9 +39,11 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     public override void _Ready()
     {
         animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
+        weapons = GetNode<HBoxContainer>("CanvasLayer/Weapons");
         healthPlayer = GetNode<HealthComponent>("HealthComponent");
         collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         deathSound = GetNode<AudioStreamPlayer>("DeathSound");
+        levelUpSound = GetNode<AudioStreamPlayer>("LevelUpSound");
         xp = 0;
         level = 1;
         xpTolevelUp = 5f;
@@ -49,8 +53,6 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
         AtualizarNearestEnemy();
         if (Input.IsActionJustPressed("click"))
         {
-            addXP(1f);
-            Atirar();
         }
     }
 
@@ -182,9 +184,6 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
     }
     private void AtualizarNearestEnemy()
     {
-        if (GodotObject.IsInstanceValid(nearestEnemy))
-            return;
-
         nearestEnemy = null;
         nearestEnemyDistance = float.PositiveInfinity;
 
@@ -216,7 +215,8 @@ public partial class Personagem : CharacterBody2D, IDestrutivel
             xp -= xpTolevelUp;
             level++;
             xpTolevelUp++;
-            GetNode<Choices>("%Choices").showChoices();
+            levelUpSound.Play();
+            weapons.GetNode<Slot>("Slot").upgradeWeapon();
             if (level > 3)
             {
                 xpTolevelUp += 2;
